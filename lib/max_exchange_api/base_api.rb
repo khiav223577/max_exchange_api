@@ -38,7 +38,7 @@ module MaxExchangeApi
 
     private
 
-    def print_log(method, message)
+    def print_log(_method, message)
       puts message
     end
   end
