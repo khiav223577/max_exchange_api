@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'httparty'
-require_relative 'api_helper'
+require 'max_exchange_api/helper'
 
 module MaxExchangeApi
   class BaseApi
