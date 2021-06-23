@@ -6,6 +6,18 @@
 [![Code Climate](https://codeclimate.com/github/khiav223577/max_exchange_api/badges/gpa.svg)](https://codeclimate.com/github/khiav223577/max_exchange_api)
 [![Test Coverage](https://codeclimate.com/github/khiav223577/max_exchange_api/badges/coverage.svg)](https://codeclimate.com/github/khiav223577/max_exchange_api/coverage)
 
+A ruby implementation of MAX exchange API
+
+* REST API V2
+* Websocket API
+
+## Documentations
+
+* [REST API Introduction](https://max.maicoin.com/documents/api_v2)
+* [REST API End Points](https://max.maicoin.com/documents/api_list)
+* [WebSocket API Documentation](https://maicoin.github.io/max-websocket-docs/)
+
+
 ## Supports
 - Ruby 2.2 ~ 2.7
 
