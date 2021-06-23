@@ -37,6 +37,21 @@ Or install it yourself as:
 
 ## Usage
 
+### Public Apis
+
+```rb
+@api = MaxExchangeApi::PublicApi.new
+```
+
+#### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
+
+```rb
+# use default parameters
+@api.depth('maxtwd')
+
+# provide all possible parameters
+@api.depth('maxtwd', limit: 10, sort_by_price: true)
+```
 
 ## Development
 
