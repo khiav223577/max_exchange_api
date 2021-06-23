@@ -35,13 +35,41 @@ Or install it yourself as:
 
     $ gem install max_exchange_api
 
-## Public Api Examples
+## Usage
+
+### Public Api Examples
 
 ```rb
 @api = MaxExchangeApi::PublicApi.new
 ```
 
-### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
+#### [GET GET /api/v2/vip_levels](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevels)
+
+> Get all VIP level fees.
+
+(Coming soon)
+
+#### [GET /api/v2/vip_levels/{level}](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevelsLevel)
+
+> Get VIP level fee by level.
+
+(Coming soon)
+
+#### [GET /api/v2/currencies](https://max.maicoin.com/documents/api_list#!/public/getApiV2Currencies)
+
+> Get all available currencies.
+
+(Coming soon)
+
+#### [GET /api/v2/k](https://max.maicoin.com/documents/api_list#!/public/getApiV2K)
+
+> Get OHLC(k line) of a specific market.
+
+(Coming soon)
+
+#### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
+
+> Get depth of a specified market.
 
 <details>
   <summary>Show code</summary>
@@ -55,7 +83,41 @@ Or install it yourself as:
 ```
 </details>
 
+#### [GET /api/v2/trades](https://max.maicoin.com/documents/api_list#!/public/getApiV2Trades)
 
+> Get recent trades on market, sorted in reverse creation order.
+
+(Coming soon)
+
+#### [GET /api/v2/markets](https://max.maicoin.com/documents/api_list#!/public/getApiV2Markets)
+
+> Get all available markets.
+
+(Coming soon)
+
+#### [GET /api/v2/summary](https://max.maicoin.com/documents/api_list#!/public/getApiV2Summary)
+
+> Overview of market data for all tickers.
+
+(Coming soon)
+
+#### [GET /api/v2/tickers/{path_market}](https://max.maicoin.com/documents/api_list#!/public/getApiV2TickersPathMarket)
+
+> Get ticker of specific market.
+
+(Coming soon)
+
+#### [GET /api/v2/tickers](https://max.maicoin.com/documents/api_list#!/public/getApiV2Tickers)
+
+> Get ticker of all markets.
+
+(Coming soon)
+
+#### [GET /api/v2/timestamp](https://max.maicoin.com/documents/api_list#!/public/getApiV2Timestamp)
+
+> Get server current time, in seconds since Unix epoch.
+
+(Coming soon)
 
 ## Development
 
