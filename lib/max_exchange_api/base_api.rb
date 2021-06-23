@@ -7,12 +7,6 @@ module MaxExchangeApi
   class BaseApi
     include HTTParty
 
-    class << self
-      def instance
-        @instance ||= new
-      end
-    end
-
     protected
 
     def send_request(method, path, headers, query)
