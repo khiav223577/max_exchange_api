@@ -35,16 +35,17 @@ Or install it yourself as:
 
     $ gem install max_exchange_api
 
-## Usage
-
-### Public Apis
+## Public Api Examples
 
 ```rb
 @api = MaxExchangeApi::PublicApi.new
 ```
 
-#### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
+### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
 
+<details>
+  <summary>Show code</summary>
+  
 ```rb
 # use default parameters
 @api.depth('maxtwd')
@@ -52,6 +53,9 @@ Or install it yourself as:
 # provide all possible parameters
 @api.depth('maxtwd', limit: 10, sort_by_price: true)
 ```
+</details>
+
+
 
 ## Development
 
