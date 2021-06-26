@@ -47,6 +47,10 @@ module MaxExchangeApi
       send_request(:get, '/markets', {})
     end
 
+    def summary
+      send_request(:get, '/summary', {})
+    end
+
     protected
 
     def send_request(method, path, query)

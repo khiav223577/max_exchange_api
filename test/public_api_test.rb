@@ -115,4 +115,15 @@ class PublicApiTest < Minitest::Test
     }
     assert_equal(expected2, response[1])
   end
+
+  def test_summary_api
+    response = @api.stub(:print_log, nil) do
+      @api.summary
+    end
+
+    assert_instance_of(Hash, response)
+    assert_instance_of(Hash, response['tickers'])
+    assert_equal(%w[at buy sell open low high last volume volume_in_btc], response['tickers']['btcusdt'].keys)
+    assert_equal(%w[at buy sell open low high last volume volume_in_btc], response['tickers']['maxtwd'].keys)
+  end
 end
