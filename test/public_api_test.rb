@@ -151,7 +151,7 @@ class PublicApiTest < Minitest::Test
       @api.timestamp
     end
 
-    assert_instance_of(Integer, response)
+    assert_instance_of(123.class, response)
     assert_operator response, :>, 1624704308
   end
 end
