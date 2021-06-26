@@ -9,6 +9,6 @@ class MaxExchangeApiTest < Minitest::Test
   end
 
   def test_default_timeout
-    assert_equal 15, MaxExchangeApi.config.default_timeout
+    assert_equal 15, MaxExchangeApi.default_config.timeout
   end
 end
