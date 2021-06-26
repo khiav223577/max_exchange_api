@@ -19,7 +19,7 @@ module MaxExchangeApi
           path,
           headers: headers,
           query: query,
-          timeout: 3,
+          timeout: MaxExchangeApi.config.default_timeout,
         ).parsed_response
 
         print_log(:info, "[API] #{uuid} response #{response}")
