@@ -1,4 +1,8 @@
 ## Change Log
 
+### [v0.1.0](https://github.com/khiav223577/max_exchange_api/compare/v0.0.1...v0.1.0) 2021/06/26
+- [#3](https://github.com/khiav223577/max_exchange_api/pull/3) Add default_timeout config (@khiav223577)
+- [#2](https://github.com/khiav223577/max_exchange_api/pull/2) Implement all v2 public APIs (@khiav223577)
+
 ### v0.0.1 2021/06/23
 - [#1](https://github.com/khiav223577/max_exchange_api/pull/1) Implement `/depth` API (@khiav223577)
