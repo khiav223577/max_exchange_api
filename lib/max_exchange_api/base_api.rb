@@ -33,7 +33,8 @@ module MaxExchangeApi
     private
 
     def print_log(method, message)
-      MaxExchangeApi.default_config.logger&.send(method, message)
+      logger = MaxExchangeApi.default_config.logger
+      logger.send(method, message) if logger
     end
   end
 end
