@@ -26,7 +26,8 @@ module MaxExchangeApi
       send_request(:get, '/depth', market: market, limit: limit, sort_by_price: sort_by_price)
     end
 
-    def trades(market, timestamp: nil, from: nil, to: nil, order_by: 'desc', pagination: true, page: 1, limit: 50, offset: 0)
+    def trades(market, timestamp: nil, from: nil, to: nil, order_by: 'desc', pagination: true, page: 1, limit: 50,
+               offset: 0)
       send_request(
         :get,
         '/trades',
