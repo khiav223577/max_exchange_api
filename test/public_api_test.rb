@@ -51,6 +51,15 @@ class PublicApiTest < Minitest::Test
     assert_equal({ 'id' => 'eth', 'precision' => 8, 'sygna_supported' => true }, response[2])
   end
 
+  def test_k_api
+    response = @api.stub(:print_log, nil) do
+      @api.k('btctwd', limit: 5)
+    end
+
+    assert_instance_of(Array, response)
+    assert_equal(5, response.size)
+  end
+
   def test_depth_api
     response = @api.stub(:print_log, nil) do
       @api.depth('maxtwd', limit: 2)

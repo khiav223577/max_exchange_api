@@ -18,6 +18,10 @@ module MaxExchangeApi
       send_request(:get, '/currencies', {})
     end
 
+    def k(market, limit: 30, period: 1, timestamp: nil)
+      send_request(:get, '/k', market: market, limit: limit, period: period, timestamp: timestamp)
+    end
+
     def depth(market, limit: 10, sort_by_price: true)
       send_request(:get, '/depth', market: market, limit: limit, sort_by_price: sort_by_price)
     end
