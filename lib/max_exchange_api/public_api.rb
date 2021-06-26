@@ -38,8 +38,12 @@ module MaxExchangeApi
         pagination: pagination,
         page: page,
         limit: limit,
-        offset: offset
+        offset: offset,
       )
+    end
+
+    def markets
+      send_request(:get, '/markets', {})
     end
 
     protected

@@ -83,4 +83,36 @@ class PublicApiTest < Minitest::Test
     assert_instance_of(Array, response)
     assert_equal(5, response.size)
   end
+
+  def test_markets_api
+    response = @api.stub(:print_log, nil) do
+      @api.markets
+    end
+
+    assert_instance_of(Array, response)
+
+    expected1 = {
+      'id'                   => 'maxtwd',
+      'name'                 => 'MAX/TWD',
+      'base_unit'            => 'max',
+      'base_unit_precision'  => 2,
+      'min_base_amount'      => 43.0,
+      'quote_unit'           => 'twd',
+      'quote_unit_precision' => 2,
+      'min_quote_amount'     => 250.0,
+    }
+    assert_equal(expected1, response[0])
+
+    expected2 = {
+      'id'                   => 'btctwd',
+      'name'                 => 'BTC/TWD',
+      'base_unit'            => 'btc',
+      'base_unit_precision'  => 8,
+      'min_base_amount'      => 0.00025,
+      'quote_unit'           => 'twd',
+      'quote_unit_precision' => 1,
+      'min_quote_amount'     => 250.0,
+    }
+    assert_equal(expected2, response[1])
+  end
 end
