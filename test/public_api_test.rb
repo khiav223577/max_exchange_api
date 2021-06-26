@@ -74,4 +74,13 @@ class PublicApiTest < Minitest::Test
     assert_instance_of(Array, response['bids'])
     assert_equal(2, response['bids'].size)
   end
+
+  def test_trades_api
+    response = @api.stub(:print_log, nil) do
+      @api.trades('btctwd', limit: 5)
+    end
+
+    assert_instance_of(Array, response)
+    assert_equal(5, response.size)
+  end
 end
