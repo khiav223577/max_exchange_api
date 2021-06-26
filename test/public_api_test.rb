@@ -145,4 +145,13 @@ class PublicApiTest < Minitest::Test
     assert_instance_of(Hash, response)
     assert_equal(%w[at buy sell open low high last vol vol_in_btc], response.keys)
   end
+
+  def test_timestamp_api
+    response = @api.stub(:print_log, nil) do
+      @api.timestamp
+    end
+
+    assert_instance_of(Integer, response)
+    assert_operator response, :>, 1624704308
+  end
 end

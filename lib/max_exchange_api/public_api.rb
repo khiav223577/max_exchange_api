@@ -59,6 +59,10 @@ module MaxExchangeApi
       end
     end
 
+    def timestamp
+      send_request(:get, '/timestamp', {})
+    end
+
     protected
 
     def send_request(method, path, query)
