@@ -35,19 +35,20 @@ Or install it yourself as:
 
     $ gem install max_exchange_api
 
-## Default config
+## Configuration
 
-Change default api timeout time (in seconds)
+### Api timeout time
 
 ```rb
-MaxExchangeApi.default_config.timeout = 3
+MaxExchangeApi.default_config.timeout = 3 # seconds
 ```
 
-Record api log
+### Api logging
+
 ```rb
 require 'logger'
 
-MaxExchangeApi.default_config.logger = Logger.new(STDOUT)
+MaxExchangeApi.default_config.logger = Logger.new(STDOUT) # print log to stdand output
 MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 ```
 
