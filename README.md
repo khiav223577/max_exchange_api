@@ -40,7 +40,15 @@ Or install it yourself as:
 Change default api timeout time (in seconds)
 
 ```rb
-MaxExchangeApi.config.default_timeout = 3
+MaxExchangeApi.default_config.timeout = 3
+```
+
+Record api log
+```rb
+require 'logger'
+
+MaxExchangeApi.default_config.logger = Logger.new(STDOUT)
+MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 ```
 
 ## Usage

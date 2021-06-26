@@ -8,4 +8,4 @@ require 'max_exchange_api'
 require 'minitest/color'
 require 'minitest/autorun'
 
-MaxExchangeApi.config.default_timeout = 15
+MaxExchangeApi.default_config.timeout = 15

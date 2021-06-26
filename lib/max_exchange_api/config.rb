@@ -2,16 +2,18 @@
 
 module MaxExchangeApi
   class Config
-    attr_accessor :default_timeout
+    attr_accessor :timeout
+    attr_accessor :logger
 
     def initialize
-      @default_timeout = 3
+      @timeout = 3
+      @logger = nil
     end
   end
 
-  @config = Config.new
+  @default_config = Config.new
 
   class << self
-    attr_reader :config
+    attr_reader :default_config
   end
 end

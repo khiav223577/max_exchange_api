@@ -19,7 +19,7 @@ module MaxExchangeApi
           path,
           headers: headers,
           query: query,
-          timeout: MaxExchangeApi.config.default_timeout,
+          timeout: MaxExchangeApi.default_config.timeout,
         ).parsed_response
 
         print_log(:info, "[API] #{uuid} response #{response}")
@@ -32,8 +32,8 @@ module MaxExchangeApi
 
     private
 
-    def print_log(_method, message)
-      puts message
+    def print_log(method, message)
+      MaxExchangeApi.default_config.logger&.send(method, message)
     end
   end
 end
