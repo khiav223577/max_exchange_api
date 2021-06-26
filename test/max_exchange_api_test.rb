@@ -7,4 +7,8 @@ class MaxExchangeApiTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::MaxExchangeApi::VERSION
   end
+
+  def test_default_timeout
+    assert_equal 3, MaxExchangeApi.config.default_timeout
+  end
 end
