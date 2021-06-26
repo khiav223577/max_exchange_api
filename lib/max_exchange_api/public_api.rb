@@ -14,6 +14,10 @@ module MaxExchangeApi
       end
     end
 
+    def currencies
+      send_request(:get, '/currencies', {})
+    end
+
     def depth(market, limit: 10, sort_by_price: true)
       send_request(:get, '/depth', market: market, limit: limit, sort_by_price: sort_by_price)
     end

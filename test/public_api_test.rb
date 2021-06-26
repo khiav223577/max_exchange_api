@@ -40,6 +40,17 @@ class PublicApiTest < Minitest::Test
     assert_equal(expected, response)
   end
 
+  def test_currencies_api
+    response = @api.stub(:print_log, nil) do
+      @api.currencies
+    end
+
+    assert_instance_of(Array, response)
+    assert_equal({ 'id' => 'twd', 'precision' => 0, 'sygna_supported' => false }, response[0])
+    assert_equal({ 'id' => 'btc', 'precision' => 8, 'sygna_supported' => true }, response[1])
+    assert_equal({ 'id' => 'eth', 'precision' => 8, 'sygna_supported' => true }, response[2])
+  end
+
   def test_depth_api
     response = @api.stub(:print_log, nil) do
       @api.depth('maxtwd', limit: 2)
