@@ -55,25 +55,53 @@ MaxExchangeApi.config.default_timeout = 3
 
 > Get all VIP level fees.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.vip_levels
+```
+</details>
 
 #### [GET /api/v2/vip_levels/{level}](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevelsLevel)
 
 > Get VIP level fee by level.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.vip_levels(2)
+```
+</details>
 
 #### [GET /api/v2/currencies](https://max.maicoin.com/documents/api_list#!/public/getApiV2Currencies)
 
 > Get all available currencies.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.currencies
+```
+</details>
 
 #### [GET /api/v2/k](https://max.maicoin.com/documents/api_list#!/public/getApiV2K)
 
 > Get OHLC(k line) of a specific market.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+# use default parameters
+@api.k('btctwd')
+
+# provide all possible parameters
+@api.k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
+```
+</details>
 
 #### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
 
@@ -95,37 +123,87 @@ MaxExchangeApi.config.default_timeout = 3
 
 > Get recent trades on market, sorted in reverse creation order.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+# use default parameters
+@api.trades('btctwd')
+
+# provide all possible parameters
+@api.trades(
+  'maxtwd', 
+  timestamp: 1624705402,
+  from: 68444,
+  to: 69444,
+  order_by: 'asc',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
 
 #### [GET /api/v2/markets](https://max.maicoin.com/documents/api_list#!/public/getApiV2Markets)
 
 > Get all available markets.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.markets
+```
+</details>
 
 #### [GET /api/v2/summary](https://max.maicoin.com/documents/api_list#!/public/getApiV2Summary)
 
 > Overview of market data for all tickers.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.summary
+```
+</details>
 
 #### [GET /api/v2/tickers/{path_market}](https://max.maicoin.com/documents/api_list#!/public/getApiV2TickersPathMarket)
 
 > Get ticker of specific market.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.tickers('btctwd')
+```
+</details>
 
 #### [GET /api/v2/tickers](https://max.maicoin.com/documents/api_list#!/public/getApiV2Tickers)
 
 > Get ticker of all markets.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.tickers
+```
+</details>
 
 #### [GET /api/v2/timestamp](https://max.maicoin.com/documents/api_list#!/public/getApiV2Timestamp)
 
 > Get server current time, in seconds since Unix epoch.
 
-(Coming soon)
+<details>
+  <summary>Show code</summary>
+  
+```rb
+@api.timestamp
+```
+</details>
 
 ## Development
 
