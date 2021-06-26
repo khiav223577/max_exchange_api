@@ -35,6 +35,14 @@ Or install it yourself as:
 
     $ gem install max_exchange_api
 
+## Default config
+
+Change default api timeout time (in seconds)
+
+```rb
+MaxExchangeApi.config.default_timeout = 3
+```
+
 ## Usage
 
 ### Public Api Examples
