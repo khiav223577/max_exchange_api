@@ -5,6 +5,41 @@ class PublicApiTest < Minitest::Test
     @api = MaxExchangeApi::PublicApi.new
   end
 
+  def test_vip_levels_api
+    response = @api.stub(:print_log, nil) do
+      @api.vip_levels
+    end
+
+    assert_instance_of(Array, response)
+    assert_equal(10, response.size)
+
+    expected = {
+      'level'                  => 0,
+      'minimum_trading_volume' => 0,
+      'minimum_staking_volume' => 0,
+      'maker_fee'              => 0.0005,
+      'taker_fee'              => 0.0015,
+    }
+    assert_equal(expected, response[0])
+  end
+
+  def test_vip_levels_api_with_level_params
+    response = @api.stub(:print_log, nil) do
+      @api.vip_levels(0)
+    end
+
+    assert_instance_of(Hash, response)
+
+    expected = {
+      'level'                  => 0,
+      'minimum_trading_volume' => 0,
+      'minimum_staking_volume' => 0,
+      'maker_fee'              => 0.0005,
+      'taker_fee'              => 0.0015,
+    }
+    assert_equal(expected, response)
+  end
+
   def test_depth_api
     response = @api.stub(:print_log, nil) do
       @api.depth('maxtwd', limit: 2)
