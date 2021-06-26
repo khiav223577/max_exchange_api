@@ -126,4 +126,23 @@ class PublicApiTest < Minitest::Test
     assert_equal(%w[at buy sell open low high last volume volume_in_btc], response['tickers']['btcusdt'].keys)
     assert_equal(%w[at buy sell open low high last volume volume_in_btc], response['tickers']['maxtwd'].keys)
   end
+
+  def test_tickers_api
+    response = @api.stub(:print_log, nil) do
+      @api.tickers
+    end
+
+    assert_instance_of(Hash, response)
+    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response['btcusdt'].keys)
+    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response['maxtwd'].keys)
+  end
+
+  def test_tickers_api_with_parameters
+    response = @api.stub(:print_log, nil) do
+      @api.tickers('btctwd')
+    end
+
+    assert_instance_of(Hash, response)
+    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response.keys)
+  end
 end

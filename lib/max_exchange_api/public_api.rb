@@ -51,6 +51,14 @@ module MaxExchangeApi
       send_request(:get, '/summary', {})
     end
 
+    def tickers(market = nil)
+      if market
+        send_request(:get, "/tickers/#{market}", {})
+      else
+        send_request(:get, '/tickers', {})
+      end
+    end
+
     protected
 
     def send_request(method, path, query)
