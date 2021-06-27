@@ -214,6 +214,467 @@ MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 ```
 </details>
 
+### Private Api Examples
+
+```rb
+access_key = 'YOUR_ACCESS_KEY'
+secret_key = 'YOUR_SECRET_KEY'
+
+@api = MaxExchangeApi::PrivateApi.new(access_key, secret_key)
+```
+
+#### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
+
+> get your executed trades related to a order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.my_trades_of_order(123456)
+
+# use user specified order id
+@api.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
+
+> get your executed trades, sorted in reverse creation order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.my_trades('btctwd')
+
+# provide all possible parameters
+@api.my_trades(
+  'maxtwd',
+  timestamp: 1624705402,
+  from: 68444,
+  to: 69444,
+  order_by: 'asc',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
+
+> get your external withdrawals history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.withdrawals('max')
+
+# provide all possible parameters
+@api.withdrawals(
+  'max',
+  'confirmed',
+  from: 68444,
+  to: 69444,
+  state: 'confirmed',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawal)
+
+> get details of a specific external withdraw
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.withdrawal('withdraw_id')
+```
+</details>
+
+#### [POST /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/postApiV2Withdrawal)
+
+> submit a withdrawal. IP whitelist for api token is required.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.create_withdrawal!('twd', 'withdraw_address_id', 100000)
+```
+</details>
+
+#### [GET /api/v2/members/profile](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersProfile)
+
+> get personal profile information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.member_profile
+```
+</details>
+
+#### [GET /api/v2/members/me](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersMe)
+
+> get your profile and accounts information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.me
+```
+</details>
+
+#### [GET /api/v2/members/vip_level](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersVipLevel)
+
+> get VIP level info
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.vip_level
+```
+</details>
+
+#### [GET /api/v2/members/accounts](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccounts)
+
+> get personal accounts information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.accounts
+```
+</details>
+
+#### [GET /api/v2/members/accounts/{path_currency}](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccountsPathCurrency)
+
+> get personal accounts information of a currency
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.account(currnecy)
+```
+</details>
+
+#### [GET /api/v2/deposits](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposits)
+
+> get your deposits history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.deposits('max')
+
+# provide all possible parameters
+@api.deposits(
+  'max',
+  'confirmed',
+  from: 68444,
+  to: 69444,
+  state: 'accepted',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/deposit](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposit)
+
+> get details of a specific deposit
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.deposit('transaction_id')
+```
+</details>
+
+#### [GET /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2DepositAddresses)
+
+> The addresses could be empty before generated, please call POST /deposit_addresses in that case
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.deposit_addresses
+
+# provide all possible parameters
+@api.deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
+```
+</details>
+
+#### [POST /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/postApiV2DepositAddresses)
+
+> Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.create_deposit_addresses!('twd')
+```
+</details>
+
+#### [GET /api/v2/withdraw_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2WithdrawAddresses)
+
+> get withdraw addresses
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.withdraw_addresses('twd')
+
+# provide all possible parameters
+@api.withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
+```
+</details>
+
+#### [GET /api/v2/internal_transfers](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfers)
+
+> get internal transfers history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.internal_transfers
+
+# provide all possible parameters
+@api.internal_transfers(
+  currency: 'btc',
+  side: 'in',
+  from: 68444,
+  to: 69444,
+  pagination: true, 
+  page: 3, 
+  limit: 15, 
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/internal_transfer](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfer)
+
+> get details of a specific internal transfer
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.internal_transfer('internal_transfer_id')
+```
+</details>
+
+#### [GET /api/v2/rewards](https://max.maicoin.com/documents/api_list#!/private/getApiV2Rewards)
+
+> get rewards history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.rewards
+
+# provide all possible parameters
+@api.rewards(
+  currency: 'btc',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/rewards/{path_reward_type}](https://max.maicoin.com/documents/api_list#!/private/getApiV2RewardsPathRewardType)
+
+> get specific rewards history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.rewards(reward_type: 'airdrop_rewards')
+
+# provide all possible parameters
+@api.rewards(
+  reward_type: 'airdrop_rewards',
+  currency: 'btc',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/max_rewards/yesterday](https://max.maicoin.com/documents/api_list#!/private/getApiV2MaxRewardsYesterday)
+
+> get max rewards yesterday
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.max_rewards_yesterday
+```
+</details>
+
+#### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
+
+> get your orders, results is paginated.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.orders('maxtwd')
+
+# provide all possible parameters
+@api.orders(
+  'maxtwd',
+  state: 'done',
+  order_by: 'desc',
+  group_id: 12345,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/order](https://max.maicoin.com/documents/api_list#!/private/getApiV2Order)
+
+> get a specific order.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.order(123456)
+
+# use user specified order id
+@api.order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [POST /api/v2/orders/clear](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersClear)
+
+> cancel all your orders with given market and side
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.cancel_orders!
+
+# provide all possible parameters
+@api.cancel_orders!(market: 'maxtwd', side: 'sell', group_id: '123456')
+```
+</details>
+
+#### [POST /api/v2/order/delete](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrderDelete)
+
+> cancel an order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.cancel_order!(123456)
+
+# use user specified order id
+@api.cancel_order!('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [POST /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/postApiV2Orders)
+
+> create a sell/buy order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_order!('maxtwd', 'buy', 1000, price: 7.5)
+
+# provide all possible parameters
+@api.create_order!(
+  'maxtwd',
+  'buy',
+  1000,
+  price: 7.5,
+  client_oid: 'MY_ORDER_ID_12345',
+  stop_price: 8,
+  ord_type: 'limit',
+  group_id: 12345678,
+)
+```
+</details>
+
+#### [POST /api/v2/orders/multi/onebyone](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersMultiOnebyone)
+
+> Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: 7.5 },
+  { side: 'buy', volume: '1500', price: 7.2 },
+])
+
+# provide all possible parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: 7.5, client_oid: 'MY_ORDER_ID_12345', stop_price: 8, ord_type: 'limit' },
+  { side: 'buy', volume: '1500', price: 7.2, client_oid: 'MY_ORDER_ID_12346', stop_price: 8, ord_type: 'limit' },
+], group_id: 12345)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
