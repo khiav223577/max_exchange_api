@@ -214,6 +214,41 @@ MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 ```
 </details>
 
+### Private Api Examples
+
+```rb
+access_key = 'YOUR_ACCESS_KEY'
+secret_key = 'YOUR_SECRET_KEY'
+
+@api = MaxExchangeApi::PrivateApi.new(access_key, secret_key)
+```
+
+#### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
+
+> get your executed trades, sorted in reverse creation order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.my_trades('btctwd')
+
+# provide all possible parameters
+@api.my_trades(
+  'maxtwd',
+  timestamp: 1624705402,
+  from: 68444,
+  to: 69444,
+  order_by: 'asc',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
