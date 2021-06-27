@@ -186,6 +186,15 @@ module MaxExchangeApi
       send_request(:get, '/order', id_params_key => order_id)
     end
 
+    def cancel_orders!(market: nil, side: nil, group_id: nil)
+      send_request(:post, '/orders/clear', market: market, side: side, group_id: group_id)
+    end
+
+    def cancel_order!(order_id, use_client_id: false)
+      id_params_key = use_client_id ? :client_oid : :id
+      send_request(:post, '/order/delete', id_params_key => order_id)
+    end
+
     protected
 
     def send_request(method, path, query)

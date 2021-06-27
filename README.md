@@ -596,6 +596,38 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [POST /api/v2/orders/clear](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersClear)
+
+> cancel all your orders with given market and side
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.cancel_orders!
+
+# provide all possible parameters
+@api.cancel_orders!(market: 'maxtwd', side: 'sell', group_id: '123456')
+```
+</details>
+
+#### [POST /api/v2/order/delete](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrderDelete)
+
+> cancel an order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.cancel_order!(123456)
+
+# use user specified order id
+@api.cancel_order!('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
