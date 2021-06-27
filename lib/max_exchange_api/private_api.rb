@@ -13,6 +13,11 @@ module MaxExchangeApi
       @secret_key = secret_key
     end
 
+    def my_trades_of_order(order_id, use_client_id: false)
+      id_params_key = use_client_id ? :client_oid : :id
+      send_request(:get, '/trades/my/of_order', id_params_key => order_id)
+    end
+
     def my_trades(market, timestamp: nil, from: nil, to: nil, order_by: 'desc', pagination: true, page: 1, limit: 50,
                   offset: 0)
       send_request(

@@ -223,6 +223,22 @@ secret_key = 'YOUR_SECRET_KEY'
 @api = MaxExchangeApi::PrivateApi.new(access_key, secret_key)
 ```
 
+#### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
+
+> get your executed trades related to a order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.my_trades_of_order(123456)
+
+# use user specified order id
+@api.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
 #### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
 
 > get your executed trades, sorted in reverse creation order
