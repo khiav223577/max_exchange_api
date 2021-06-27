@@ -55,11 +55,31 @@ module MaxExchangeApi
       send_request(:get, "/members/accounts/#{currency}", {})
     end
 
+    def deposits(currency, from: nil, to: nil, state: nil, pagination: nil, page: 1, limit: 50,
+                 offset: 0)
+      send_request(
+        :get,
+        '/deposits',
+        currency: currency,
+        from: from,
+        to: to,
+        state: state,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def deposit(transaction_id)
+      send_request(:get, '/deposit', txid: transaction_id)
+    end
+
     def withdrawal(withdraw_id)
       send_request(:get, '/withdrawal', uuid: withdraw_id)
     end
 
-    def withdrawals(currency, state, from: nil, to: nil, pagination: nil, page: 1, limit: 50,
+    def withdrawals(currency, from: nil, to: nil, state: nil, pagination: nil, page: 1, limit: 50,
                     offset: 0)
       send_request(
         :get,
@@ -82,7 +102,8 @@ module MaxExchangeApi
     protected
 
     def send_request(method, path, query)
-      query = query.merge(path: "/api/v2#{path}", nonce: (Time.now.to_f * 1000).to_i)
+      query = query.compact
+      query.merge!(path: "/api/v2#{path}", nonce: (Time.now.to_f * 1000).to_i)
       return super(method, path, Helper.gen_headers(query, @access_key, @secret_key), query)
     end
   end

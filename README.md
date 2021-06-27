@@ -274,7 +274,7 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api.withdrawals('max', 'confirmed')
+@api.withdrawals('max')
 
 # provide all possible parameters
 @api.withdrawals(
@@ -282,6 +282,7 @@ secret_key = 'YOUR_SECRET_KEY'
   'confirmed',
   from: 68444,
   to: 69444,
+  state: 'confirmed',
   pagination: true,
   page: 3,
   limit: 15,
@@ -371,6 +372,44 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 @api.account(currnecy)
+```
+</details>
+
+#### [GET /api/v2/deposits](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposits)
+
+> get your deposits history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.deposits('max')
+
+# provide all possible parameters
+@api.deposits(
+  'max',
+  'confirmed',
+  from: 68444,
+  to: 69444,
+  state: 'accepted',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/deposit](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposit)
+
+> get details of a specific deposit
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.deposit('transaction_id')
 ```
 </details>
 
