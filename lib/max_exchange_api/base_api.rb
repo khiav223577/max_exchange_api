@@ -7,6 +7,13 @@ module MaxExchangeApi
   class BaseApi
     include HTTParty
 
+    attr_reader :config
+
+    def initialize(config: nil)
+      @config = Config.new(config)
+      @config.reverse_merge!(MaxExchangeApi.default_config)
+    end
+
     protected
 
     def send_request(method, path, headers, query)
@@ -19,7 +26,7 @@ module MaxExchangeApi
           path,
           headers: headers,
           query: query,
-          timeout: MaxExchangeApi.default_config.timeout,
+          timeout: @config.timeout,
         ).parsed_response
 
         print_log(:info, "[API] #{uuid} response #{response}")
@@ -33,7 +40,7 @@ module MaxExchangeApi
     private
 
     def print_log(method, message)
-      logger = MaxExchangeApi.default_config.logger
+      logger = @config.logger
       logger.send(method, message) if logger
     end
   end

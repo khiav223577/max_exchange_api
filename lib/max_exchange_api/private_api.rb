@@ -6,8 +6,8 @@ module MaxExchangeApi
   class PrivateApi < BaseApi
     base_uri 'https://max-api.maicoin.com/api/v2'
 
-    def initialize(access_key, secret_key)
-      super()
+    def initialize(access_key, secret_key, config: nil)
+      super(config: config)
 
       @access_key = access_key
       @secret_key = secret_key
