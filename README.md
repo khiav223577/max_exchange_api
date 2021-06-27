@@ -314,6 +314,42 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/members/profile](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersProfile)
+
+> get personal profile information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.member_profile
+```
+</details>
+
+#### [GET /api/v2/members/me](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersMe)
+
+> get your profile and accounts information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.me
+```
+</details>
+
+#### [GET /api/v2/members/vip_level](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersVipLevel)
+
+> get VIP level info
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.vip_level
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
