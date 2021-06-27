@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ConfigTest < Minitest::Test
   def test_default_config
-    assert_equal 3, $origin_default_config.timeout
-    assert_nil $origin_default_config.logger
+    assert_equal 3, TestHelper.origin_default_config.timeout
+    assert_nil TestHelper.origin_default_config.logger
   end
 
   def test_timeout

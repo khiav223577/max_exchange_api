@@ -8,5 +8,12 @@ require 'max_exchange_api'
 require 'minitest/color'
 require 'minitest/autorun'
 
-$origin_default_config = MaxExchangeApi.default_config.clone
+module TestHelper
+  @origin_default_config = MaxExchangeApi.default_config.clone.freeze
+
+  class << self
+    attr_reader :origin_default_config
+  end
+end
+
 MaxExchangeApi.default_config.timeout = 15
