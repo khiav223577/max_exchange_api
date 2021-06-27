@@ -457,6 +457,43 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/internal_transfers](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfers)
+
+> get internal transfers history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.internal_transfers
+
+# provide all possible parameters
+@api.internal_transfers(
+  currency: 'btc',
+  side: 'in',
+  from: 68444,
+  to: 69444,
+  pagination: true, 
+  page: 3, 
+  limit: 15, 
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/internal_transfer](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfer)
+
+> get details of a specific internal transfer
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.internal_transfer('internal_transfer_id')
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

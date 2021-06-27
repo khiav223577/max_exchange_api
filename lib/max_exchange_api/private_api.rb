@@ -127,6 +127,26 @@ module MaxExchangeApi
       send_request(:post, '/withdrawal', currency: currency, withdraw_address_uuid: withdraw_address_id, amount: amount)
     end
 
+    def internal_transfers(currency: nil, side: 'in', from: nil, to: nil, pagination: nil, page: 1, limit: 50,
+                           offset: 0)
+      send_request(
+        :get,
+        '/internal_transfers',
+        currency: currency,
+        side: side,
+        from: from,
+        to: to,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def internal_transfer(internal_transfer_id)
+      send_request(:get, '/internal_transfer', uuid: internal_transfer_id)
+    end
+
     protected
 
     def send_request(method, path, query)
