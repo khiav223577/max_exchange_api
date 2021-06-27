@@ -223,6 +223,7 @@ secret_key = 'YOUR_SECRET_KEY'
 @api = MaxExchangeApi::PrivateApi.new(access_key, secret_key)
 ```
 
+### Trade
 #### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
 
 > get your executed trades related to a order
@@ -265,6 +266,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Withdrawal
 #### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
 
 > get your external withdrawals history
@@ -315,6 +317,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Profile
 #### [GET /api/v2/members/profile](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersProfile)
 
 > get personal profile information
@@ -351,6 +354,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Account
 #### [GET /api/v2/members/accounts](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccounts)
 
 > get personal accounts information
@@ -375,6 +379,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Deposit
 #### [GET /api/v2/deposits](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposits)
 
 > get your deposits history
@@ -413,6 +418,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Address
 #### [GET /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2DepositAddresses)
 
 > The addresses could be empty before generated, please call POST /deposit_addresses in that case
@@ -457,6 +463,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Internal Transfer
 #### [GET /api/v2/internal_transfers](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfers)
 
 > get internal transfers history
@@ -494,6 +501,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Reward
 #### [GET /api/v2/rewards](https://max.maicoin.com/documents/api_list#!/private/getApiV2Rewards)
 
 > get rewards history
@@ -555,6 +563,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Order
 #### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
 
 > get your orders, results is paginated.
