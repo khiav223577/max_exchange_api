@@ -413,6 +413,50 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2DepositAddresses)
+
+> The addresses could be empty before generated, please call POST /deposit_addresses in that case
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.deposit_addresses
+
+# provide all possible parameters
+@api.deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
+```
+</details>
+
+#### [POST /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/postApiV2DepositAddresses)
+
+> Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.create_deposit_addresses!('twd')
+```
+</details>
+
+#### [GET /api/v2/withdraw_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2WithdrawAddresses)
+
+> get withdraw addresses
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.withdraw_addresses('twd')
+
+# provide all possible parameters
+@api.withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

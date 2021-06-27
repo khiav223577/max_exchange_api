@@ -75,6 +75,34 @@ module MaxExchangeApi
       send_request(:get, '/deposit', txid: transaction_id)
     end
 
+    def deposit_addresses(currency: nil, pagination: nil, page: 1, limit: 50, offset: 0)
+      send_request(
+        :get,
+        '/deposit_addresses',
+        currency: currency,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def create_deposit_addresses!(currency)
+      send_request(:post, '/deposit_addresses', currency: currency)
+    end
+
+    def withdraw_addresses(currency, pagination: nil, page: 1, limit: 50, offset: 0)
+      send_request(
+        :get,
+        '/withdraw_addresses',
+        currency: currency,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
     def withdrawal(withdraw_id)
       send_request(:get, '/withdrawal', uuid: withdraw_id)
     end
