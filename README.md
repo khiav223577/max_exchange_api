@@ -555,6 +555,47 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
+
+> get your orders, results is paginated.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.orders('maxtwd')
+
+# provide all possible parameters
+@api.orders(
+  'maxtwd',
+  state: 'done',
+  order_by: 'desc',
+  group_id: 12345,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/order](https://max.maicoin.com/documents/api_list#!/private/getApiV2Order)
+
+> get a specific order.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.order(123456)
+
+# use user specified order id
+@api.order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

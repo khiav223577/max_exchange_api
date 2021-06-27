@@ -166,6 +166,26 @@ module MaxExchangeApi
       send_request(:get, '/max_rewards/yesterday', {})
     end
 
+    def orders(market, state: nil, order_by: 'asc', group_id: nil, pagination: nil, page: 1, limit: 50, offset: 0)
+      send_request(
+        :get,
+        '/orders',
+        market: market,
+        state: state,
+        order_by: order_by,
+        group_id: group_id,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def order(order_id, use_client_id: false)
+      id_params_key = use_client_id ? :client_oid : :id
+      send_request(:get, '/order', id_params_key => order_id)
+    end
+
     protected
 
     def send_request(method, path, query)
