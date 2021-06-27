@@ -265,6 +265,55 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
+
+> get your external withdrawals history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.withdrawals('max', 'confirmed')
+
+# provide all possible parameters
+@api.withdrawals(
+  'max',
+  'confirmed',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawal)
+
+> get details of a specific external withdraw
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.withdrawal('withdraw_id')
+```
+</details>
+
+#### [POST /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/postApiV2Withdrawal)
+
+> submit a withdrawal. IP whitelist for api token is required.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.create_withdrawal!('twd', 'withdraw_address_id', 100000)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

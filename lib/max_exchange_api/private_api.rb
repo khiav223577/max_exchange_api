@@ -35,6 +35,30 @@ module MaxExchangeApi
       )
     end
 
+    def withdrawal(withdraw_id)
+      send_request(:get, '/withdrawal', uuid: withdraw_id)
+    end
+
+    def withdrawals(currency, state, from: nil, to: nil, pagination: nil, page: 1, limit: 50,
+                    offset: 0)
+      send_request(
+        :get,
+        '/withdrawals',
+        currency: currency,
+        from: from,
+        to: to,
+        state: state,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def create_withdrawal!(currency, withdraw_address_id, amount)
+      send_request(:post, '/withdrawal', currency: currency, withdraw_address_uuid: withdraw_address_id, amount: amount)
+    end
+
     protected
 
     def send_request(method, path, query)
