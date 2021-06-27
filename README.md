@@ -628,6 +628,53 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [POST /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/postApiV2Orders)
+
+> create a sell/buy order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_order!('maxtwd', 'buy', 1000, price: 7.5)
+
+# provide all possible parameters
+@api.create_order!(
+  'maxtwd',
+  'buy',
+  1000,
+  price: 7.5,
+  client_oid: 'MY_ORDER_ID_12345',
+  stop_price: 8,
+  ord_type: 'limit',
+  group_id: 12345678,
+)
+```
+</details>
+
+#### [POST /api/v2/orders/multi/onebyone](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersMultiOnebyone)
+
+> Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: 7.5 },
+  { side: 'buy', volume: '1500', price: 7.2 },
+])
+
+# provide all possible parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: 7.5, client_oid: 'MY_ORDER_ID_12345', stop_price: 8, ord_type: 'limit' },
+  { side: 'buy', volume: '1500', price: 7.2, client_oid: 'MY_ORDER_ID_12346', stop_price: 8, ord_type: 'limit' },
+], group_id: 12345)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

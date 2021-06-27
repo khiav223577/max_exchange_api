@@ -195,6 +195,25 @@ module MaxExchangeApi
       send_request(:post, '/order/delete', id_params_key => order_id)
     end
 
+    def create_order!(market, side, volume, price: nil, client_oid: nil, stop_price: nil, ord_type: nil, group_id: nil)
+      send_request(
+        :post,
+        '/orders',
+        market: market,
+        side: side,
+        volume: volume,
+        price: price,
+        client_oid: client_oid,
+        stop_price: stop_price,
+        ord_type: ord_type,
+        group_id: group_id,
+      )
+    end
+
+    def create_orders!(market, orders, group_id: nil)
+      send_request(:post, '/orders/multi/onebyone', market: market, orders: orders, group_id: group_id)
+    end
+
     protected
 
     def send_request(method, path, query)
