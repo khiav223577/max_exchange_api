@@ -350,6 +350,30 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/members/accounts](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccounts)
+
+> get personal accounts information
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.accounts
+```
+</details>
+
+#### [GET /api/v2/members/accounts/{path_currency}](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccountsPathCurrency)
+
+> get personal accounts information of a currency
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.account(currnecy)
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

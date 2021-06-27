@@ -47,6 +47,14 @@ module MaxExchangeApi
       send_request(:get, '/members/vip_level', {})
     end
 
+    def accounts
+      send_request(:get, '/members/accounts', {})
+    end
+
+    def account(currency)
+      send_request(:get, "/members/accounts/#{currency}", {})
+    end
+
     def withdrawal(withdraw_id)
       send_request(:get, '/withdrawal', uuid: withdraw_id)
     end
