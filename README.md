@@ -37,19 +37,29 @@ Or install it yourself as:
 
 ## Configuration
 
-### Api timeout time
+### Set timeout time
 
 ```rb
+# default config
 MaxExchangeApi.default_config.timeout = 3 # seconds
+
+# custom config
+MaxExchangeApi::PublicApi.new(config: { timeout: 12 })
+MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 12 })
 ```
 
-### Api logging
+### Logging
 
 ```rb
 require 'logger'
 
+# default config
 MaxExchangeApi.default_config.logger = Logger.new(STDOUT) # print log to stdand output
 MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
+
+# custom config
+MaxExchangeApi::PublicApi.new(config: { logger: Logger.new(STDOUT) })
+MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
 ```
 
 ## Usage
