@@ -494,6 +494,67 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### [GET /api/v2/rewards](https://max.maicoin.com/documents/api_list#!/private/getApiV2Rewards)
+
+> get rewards history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.rewards
+
+# provide all possible parameters
+@api.rewards(
+  currency: 'btc',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/rewards/{path_reward_type}](https://max.maicoin.com/documents/api_list#!/private/getApiV2RewardsPathRewardType)
+
+> get specific rewards history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.rewards(reward_type: 'airdrop_rewards')
+
+# provide all possible parameters
+@api.rewards(
+  reward_type: 'airdrop_rewards',
+  currency: 'btc',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/max_rewards/yesterday](https://max.maicoin.com/documents/api_list#!/private/getApiV2MaxRewardsYesterday)
+
+> get max rewards yesterday
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api.max_rewards_yesterday
+```
+</details>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

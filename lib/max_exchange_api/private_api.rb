@@ -147,6 +147,25 @@ module MaxExchangeApi
       send_request(:get, '/internal_transfer', uuid: internal_transfer_id)
     end
 
+    def rewards(reward_type: nil, currency: nil, from: nil, to: nil, pagination: nil, page: 1, limit: 50, offset: 0)
+      path = reward_type ? '/rewards' : "/rewards/#{reward_type}"
+      send_request(
+        :get,
+        path,
+        currency: currency,
+        from: from,
+        to: to,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
+    def max_rewards_yesterday
+      send_request(:get, '/max_rewards/yesterday', {})
+    end
+
     protected
 
     def send_request(method, path, query)
