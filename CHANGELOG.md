@@ -1,5 +1,8 @@
 ## Change Log
 
+### [v1.2.0](https://github.com/khiav223577/max_exchange_api/compare/v1.1.1...v1.2.0) 2021/08/01
+- [#9](https://github.com/khiav223577/max_exchange_api/pull/9) add yields api (@khiav223577)
+
 ### [v1.1.1](https://github.com/khiav223577/max_exchange_api/compare/v1.1.0...v1.1.1) 2021/08/01
 - [#7](https://github.com/khiav223577/max_exchange_api/pull/7) Fix wrong path in rewards API (@khiav223577)
 - [#8](https://github.com/khiav223577/max_exchange_api/pull/8) Adjust: maker fee and min base amount test cases (@khiav223577)
