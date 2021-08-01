@@ -148,7 +148,7 @@ module MaxExchangeApi
     end
 
     def rewards(reward_type: nil, currency: nil, from: nil, to: nil, pagination: nil, page: 1, limit: 50, offset: 0)
-      path = reward_type ? '/rewards' : "/rewards/#{reward_type}"
+      path = reward_type ? "/rewards/#{reward_type}" : '/rewards'
       send_request(
         :get,
         path,
