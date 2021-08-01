@@ -573,6 +573,30 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+#### GET /api/v2/yields
+
+> get yields history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.yields
+
+# provide all possible parameters
+@api.yields(
+  currency: 'usdt',
+  from: 68444,
+  to: 69444,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
 ### Order
 #### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
 

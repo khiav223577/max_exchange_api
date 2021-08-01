@@ -162,6 +162,20 @@ module MaxExchangeApi
       )
     end
 
+    def yields(currency: nil, from: nil, to: nil, pagination: nil, page: 1, limit: 50, offset: 0)
+      send_request(
+        :get,
+        '/yields',
+        currency: currency,
+        from: from,
+        to: to,
+        pagination: pagination,
+        page: page,
+        limit: limit,
+        offset: offset,
+      )
+    end
+
     def max_rewards_yesterday
       send_request(:get, '/max_rewards/yesterday', {})
     end
