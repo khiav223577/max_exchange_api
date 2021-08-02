@@ -573,7 +573,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### GET /api/v2/yields
+#### [GET /api/v2/yields](https://max.maicoin.com/documents/api_list#!/private/getApiV2Yields)
 
 > get yields history
 
