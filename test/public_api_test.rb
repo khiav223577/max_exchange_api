@@ -108,7 +108,7 @@ class PublicApiTest < Minitest::Test
       'name'                 => 'BTC/TWD',
       'base_unit'            => 'btc',
       'base_unit_precision'  => 8,
-      'min_base_amount'      => 0.00027,
+      'min_base_amount'      => 0.00018,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 1,
       'min_quote_amount'     => 250.0,
