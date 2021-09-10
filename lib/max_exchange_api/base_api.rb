@@ -25,7 +25,7 @@ module MaxExchangeApi
           method,
           path,
           headers: headers,
-          query: query,
+          body: query,
           timeout: @config.timeout,
         ).parsed_response
 
