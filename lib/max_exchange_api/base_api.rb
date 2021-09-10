@@ -20,13 +20,15 @@ module MaxExchangeApi
       uuid = SecureRandom.uuid
       print_log(:info, "[API] #{uuid} #{method.upcase} '#{path}' query = #{query}")
 
+      body_or_query = method == :get ? :query : :body
+
       begin
         response = self.class.send(
           method,
           path,
           headers: headers,
-          body: query,
           timeout: @config.timeout,
+          body_or_query => query,
         ).parsed_response
 
         print_log(:info, "[API] #{uuid} response #{response}")
