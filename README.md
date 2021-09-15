@@ -70,7 +70,7 @@ MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: Logger.
 @api = MaxExchangeApi::PublicApi.new
 ```
 
-#### [GET GET /api/v2/vip_levels](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevels)
+#### [GET /api/v2/vip_levels](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevels)
 
 > Get all VIP level fees.
 
