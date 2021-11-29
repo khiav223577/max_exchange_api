@@ -96,9 +96,9 @@ class PublicApiTest < Minitest::Test
       'name'                 => 'MAX/TWD',
       'base_unit'            => 'max',
       'base_unit_precision'  => 2,
-      'min_base_amount'      => 43.0,
+      'min_base_amount'      => 21.0,
       'quote_unit'           => 'twd',
-      'quote_unit_precision' => 2,
+      'quote_unit_precision' => 4,
       'min_quote_amount'     => 250.0,
     }
     assert_equal(expected1, response[0])
@@ -108,7 +108,7 @@ class PublicApiTest < Minitest::Test
       'name'                 => 'BTC/TWD',
       'base_unit'            => 'btc',
       'base_unit_precision'  => 8,
-      'min_base_amount'      => 0.00018,
+      'min_base_amount'      => 0.00015,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 1,
       'min_quote_amount'     => 250.0,
