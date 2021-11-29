@@ -26,7 +26,10 @@ module MaxExchangeApi
         response = self.class.send(
           method,
           path,
-          headers: headers,
+          headers: headers.merge(
+            'Accept'     => 'application/json',
+            'User-Agent' => "max_exchange_api (#{MaxExchangeApi::VERSION})",
+          ),
           timeout: @config.timeout,
           body_or_query => query,
         ).parsed_response
