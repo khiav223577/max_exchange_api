@@ -53,7 +53,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 
 ```rb
 require 'logger'
 
-# Print log to stdand output
+# Print log to standard output
 MaxExchangeApi.default_config.logger = Logger.new(STDOUT)
 
 # Print log to file
