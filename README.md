@@ -40,12 +40,12 @@ Or install it yourself as:
 ### Set timeout time
 
 ```rb
-# default config
+# Set default timeout time
 MaxExchangeApi.default_config.timeout = 3 # seconds
 
-# custom config
-MaxExchangeApi::PublicApi.new(config: { timeout: 12 })
-MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 12 })
+# Create an api instance with custom timeout time
+api = MaxExchangeApi::PublicApi.new(config: { timeout: 12 })
+api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 12 })
 ```
 
 ### Logging
@@ -53,13 +53,15 @@ MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 12 })
 ```rb
 require 'logger'
 
-# default config
+# Print log to stdand output
 MaxExchangeApi.default_config.logger = Logger.new(STDOUT) # print log to stdand output
+
+# Print log to file
 MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 
-# custom config
-MaxExchangeApi::PublicApi.new(config: { logger: Logger.new(STDOUT) })
-MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
+# Create an api instance with custom logger
+api = MaxExchangeApi::PublicApi.new(config: { logger: Logger.new(STDOUT) })
+api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
 ```
 
 ## Usage
