@@ -54,7 +54,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 
 require 'logger'
 
 # Print log to stdand output
-MaxExchangeApi.default_config.logger = Logger.new(STDOUT) # print log to stdand output
+MaxExchangeApi.default_config.logger = Logger.new(STDOUT)
 
 # Print log to file
 MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
