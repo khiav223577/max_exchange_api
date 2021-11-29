@@ -19,7 +19,7 @@ A ruby implementation of MAX exchange API
 
 
 ## Supports
-- Ruby 2.2 ~ 2.7
+- Ruby 2.2 ~ 2.7, 3.0
 
 ## Installation
 
