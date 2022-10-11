@@ -708,14 +708,14 @@ secret_key = 'YOUR_SECRET_KEY'
 ```rb
 # use default parameters
 @api.create_orders!('maxtwd', [
-  { side: 'buy', volume: '1000', price: 7.5 },
-  { side: 'buy', volume: '1500', price: 7.2 },
+  { side: 'buy', volume: '1000', price: '7.5' },
+  { side: 'buy', volume: '1500', price: '7.2' },
 ])
 
 # provide all possible parameters
 @api.create_orders!('maxtwd', [
-  { side: 'buy', volume: '1000', price: 7.5, client_oid: 'MY_ORDER_ID_12345', stop_price: 8, ord_type: 'limit' },
-  { side: 'buy', volume: '1500', price: 7.2, client_oid: 'MY_ORDER_ID_12346', stop_price: 8, ord_type: 'limit' },
+  { side: 'buy', volume: '1000', price: '7.5', client_oid: 'MY_ORDER_ID_12345', stop_price: '8', ord_type: 'limit' },
+  { side: 'buy', volume: '1500', price: '7.2', client_oid: 'MY_ORDER_ID_12346', stop_price: '8', ord_type: 'limit' },
 ], group_id: 12345)
 ```
 </details>
