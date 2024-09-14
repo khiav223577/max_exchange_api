@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'max_exchange_api'
   spec.version       = MaxExchangeApi::VERSION
   spec.authors       = ['khiav reoy']
-  spec.email         = ['mrtmrt15xn@yahoo.com.tw']
+  spec.email         = ['khiav223577@gmail.com']
 
   spec.summary       = 'MAX Exchange API Ruby SDK'
   spec.description   = 'MAX Exchange API Ruby SDK'
