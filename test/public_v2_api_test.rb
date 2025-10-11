@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class PublicApiTest < Minitest::Test
+class PublicV2ApiTest < Minitest::Test
   def setup
-    @api = MaxExchangeApi::PublicApi.new
+    @api = MaxExchangeApi::PublicV2Api.new
   end
 
   def test_vip_levels_api
