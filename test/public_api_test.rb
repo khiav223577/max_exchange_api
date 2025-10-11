@@ -17,7 +17,7 @@ class PublicApiTest < Minitest::Test
       'level'                  => 0,
       'minimum_trading_volume' => 0,
       'minimum_staking_volume' => 0,
-      'maker_fee'              => 0.00045,
+      'maker_fee'              => 0.0005,
       'taker_fee'              => 0.0015,
     }
     assert_equal(expected, response[0])
@@ -34,7 +34,7 @@ class PublicApiTest < Minitest::Test
       'level'                  => 0,
       'minimum_trading_volume' => 0,
       'minimum_staking_volume' => 0,
-      'maker_fee'              => 0.00045,
+      'maker_fee'              => 0.0005,
       'taker_fee'              => 0.0015,
     }
     assert_equal(expected, response)
@@ -59,7 +59,7 @@ class PublicApiTest < Minitest::Test
       {
         'id'                 => 'btc',
         'precision'          => 8,
-        'sygna_supported'    => true,
+        'sygna_supported'    => false,
         'm_wallet_supported' => true,
         'min_borrow_amount'  => '0.001',
       }, response[1])
@@ -120,7 +120,7 @@ class PublicApiTest < Minitest::Test
       'market_status'        => 'active',
       'base_unit'            => 'max',
       'base_unit_precision'  => 2,
-      'min_base_amount'      => 21.0,
+      'min_base_amount'      => 25.0,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 4,
       'min_quote_amount'     => 250.0,
@@ -134,7 +134,7 @@ class PublicApiTest < Minitest::Test
       'market_status'        => 'active',
       'base_unit'            => 'btc',
       'base_unit_precision'  => 8,
-      'min_base_amount'      => 0.0004,
+      'min_base_amount'      => 0.00008,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 1,
       'min_quote_amount'     => 250.0,
@@ -150,8 +150,8 @@ class PublicApiTest < Minitest::Test
 
     assert_instance_of(Hash, response)
     assert_instance_of(Hash, response['tickers'])
-    assert_equal(%w[at buy high last low open sell volume volume_in_btc], response['tickers']['btcusdt'].keys.sort)
-    assert_equal(%w[at buy high last low open sell volume volume_in_btc], response['tickers']['maxtwd'].keys.sort)
+    assert_equal(%w[at buy buy_vol high last low open sell sell_vol volume volume_in_btc volume_in_quote], response['tickers']['btcusdt'].keys.sort)
+    assert_equal(%w[at buy buy_vol high last low open sell sell_vol volume volume_in_btc volume_in_quote], response['tickers']['maxtwd'].keys.sort)
   end
 
   def test_tickers_api
@@ -160,8 +160,8 @@ class PublicApiTest < Minitest::Test
     end
 
     assert_instance_of(Hash, response)
-    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response['btcusdt'].keys)
-    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response['maxtwd'].keys)
+    assert_equal(%w[at buy buy_vol sell sell_vol open low high last vol vol_in_btc vol_in_quote], response['btcusdt'].keys)
+    assert_equal(%w[at buy buy_vol sell sell_vol open low high last vol vol_in_btc vol_in_quote], response['maxtwd'].keys)
   end
 
   def test_tickers_api_with_parameters
@@ -170,7 +170,7 @@ class PublicApiTest < Minitest::Test
     end
 
     assert_instance_of(Hash, response)
-    assert_equal(%w[at buy sell open low high last vol vol_in_btc], response.keys)
+    assert_equal(%w[at buy buy_vol sell sell_vol open low high last vol vol_in_btc vol_in_quote], response.keys)
   end
 
   def test_timestamp_api
