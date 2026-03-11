@@ -81,7 +81,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2vip_levels
+@api_v2.vip_levels
 ```
 </details>
 
@@ -93,7 +93,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2vip_levels(2)
+@api_v2.vip_levels(2)
 ```
 </details>
 
@@ -105,7 +105,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2currencies
+@api_v2.currencies
 ```
 </details>
 
@@ -118,10 +118,10 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   
 ```rb
 # use default parameters
-@api_v2k('btctwd')
+@api_v2.k('btctwd')
 
 # provide all possible parameters
-@api_v2k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
+@api_v2.k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
 ```
 </details>
 
@@ -134,10 +134,10 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   
 ```rb
 # use default parameters
-@api_v2depth('maxtwd')
+@api_v2.depth('maxtwd')
 
 # provide all possible parameters
-@api_v2depth('maxtwd', limit: 10, sort_by_price: true)
+@api_v2.depth('maxtwd', limit: 10, sort_by_price: true)
 ```
 </details>
 
@@ -150,10 +150,10 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   
 ```rb
 # use default parameters
-@api_v2trades('btctwd')
+@api_v2.trades('btctwd')
 
 # provide all possible parameters
-@api_v2trades(
+@api_v2.trades(
   'maxtwd', 
   timestamp: 1624705402,
   from: 68444,
@@ -175,7 +175,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2markets
+@api_v2.markets
 ```
 </details>
 
@@ -187,7 +187,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2summary
+@api_v2.summary
 ```
 </details>
 
@@ -199,7 +199,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2tickers('btctwd')
+@api_v2.tickers('btctwd')
 ```
 </details>
 
@@ -211,7 +211,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2tickers
+@api_v2.tickers
 ```
 </details>
 
@@ -223,7 +223,7 @@ api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: L
   <summary>Show code</summary>
   
 ```rb
-@api_v2timestamp
+@api_v2.timestamp
 ```
 </details>
 
@@ -261,10 +261,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use max unique order id
-@api_v2my_trades_of_order(123456)
+@api_v2.my_trades_of_order(123456)
 
 # use user specified order id
-@api_v2my_trades_of_order('MY_ORDER_123456', use_client_id: true)
+@api_v2.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
 ```
 </details>
 
@@ -277,10 +277,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2my_trades('btctwd')
+@api_v2.my_trades('btctwd')
 
 # provide all possible parameters
-@api_v2my_trades(
+@api_v2.my_trades(
   'maxtwd',
   timestamp: 1624705402,
   from: 68444,
@@ -304,10 +304,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2withdrawals('max')
+@api_v2.withdrawals('max')
 
 # provide all possible parameters
-@api_v2withdrawals(
+@api_v2.withdrawals(
   'max',
   'confirmed',
   from: 68444,
@@ -329,7 +329,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2withdrawal('withdraw_id')
+@api_v2.withdrawal('withdraw_id')
 ```
 </details>
 
@@ -341,7 +341,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2create_withdrawal!('twd', 'withdraw_address_id', 100000)
+@api_v2.create_withdrawal!('twd', 'withdraw_address_id', 100000)
 ```
 </details>
 
@@ -354,7 +354,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2member_profile
+@api_v2.member_profile
 ```
 </details>
 
@@ -366,7 +366,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2me
+@api_v2.me
 ```
 </details>
 
@@ -378,7 +378,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2vip_level
+@api_v2.vip_level
 ```
 </details>
 
@@ -391,7 +391,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2accounts
+@api_v2.accounts
 ```
 </details>
 
@@ -403,7 +403,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2account(currnecy)
+@api_v2.account(currnecy)
 ```
 </details>
 
@@ -417,10 +417,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2deposits('max')
+@api_v2.deposits('max')
 
 # provide all possible parameters
-@api_v2deposits(
+@api_v2.deposits(
   'max',
   'confirmed',
   from: 68444,
@@ -442,7 +442,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2deposit('transaction_id')
+@api_v2.deposit('transaction_id')
 ```
 </details>
 
@@ -456,10 +456,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2deposit_addresses
+@api_v2.deposit_addresses
 
 # provide all possible parameters
-@api_v2deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
+@api_v2.deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
 ```
 </details>
 
@@ -471,7 +471,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2create_deposit_addresses!('twd')
+@api_v2.create_deposit_addresses!('twd')
 ```
 </details>
 
@@ -484,10 +484,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2withdraw_addresses('twd')
+@api_v2.withdraw_addresses('twd')
 
 # provide all possible parameters
-@api_v2withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
+@api_v2.withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
 ```
 </details>
 
@@ -501,10 +501,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2internal_transfers
+@api_v2.internal_transfers
 
 # provide all possible parameters
-@api_v2internal_transfers(
+@api_v2.internal_transfers(
   currency: 'btc',
   side: 'in',
   from: 68444,
@@ -525,7 +525,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2internal_transfer('internal_transfer_id')
+@api_v2.internal_transfer('internal_transfer_id')
 ```
 </details>
 
@@ -539,10 +539,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2rewards
+@api_v2.rewards
 
 # provide all possible parameters
-@api_v2rewards(
+@api_v2.rewards(
   currency: 'btc',
   from: 68444,
   to: 69444,
@@ -563,10 +563,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2rewards(reward_type: 'airdrop_rewards')
+@api_v2.rewards(reward_type: 'airdrop_rewards')
 
 # provide all possible parameters
-@api_v2rewards(
+@api_v2.rewards(
   reward_type: 'airdrop_rewards',
   currency: 'btc',
   from: 68444,
@@ -587,7 +587,7 @@ secret_key = 'YOUR_SECRET_KEY'
   <summary>Show code</summary>
 
 ```rb
-@api_v2max_rewards_yesterday
+@api_v2.max_rewards_yesterday
 ```
 </details>
 
@@ -600,10 +600,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2yields
+@api_v2.yields
 
 # provide all possible parameters
-@api_v2yields(
+@api_v2.yields(
   currency: 'usdt',
   from: 68444,
   to: 69444,
@@ -625,7 +625,7 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2orders('maxtwd')
+@api_v2.orders('maxtwd')
 
 # provide all possible parameters
 @api.orders(
