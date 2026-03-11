@@ -44,8 +44,8 @@ Or install it yourself as:
 MaxExchangeApi.default_config.timeout = 3 # seconds
 
 # Create an api instance with custom timeout time
-api = MaxExchangeApi::PublicApi.new(config: { timeout: 12 })
-api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { timeout: 12 })
+api = MaxExchangeApi::PublicV3Api.new(config: { timeout: 12 })
+api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { timeout: 12 })
 ```
 
 ### Logging
@@ -60,8 +60,8 @@ MaxExchangeApi.default_config.logger = Logger.new(STDOUT)
 MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 
 # Create an api instance with custom logger
-api = MaxExchangeApi::PublicApi.new(config: { logger: Logger.new(STDOUT) })
-api = MaxExchangeApi::PrivateApi.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
+api = MaxExchangeApi::PublicV3Api.new(config: { logger: Logger.new(STDOUT) })
+api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
 ```
 
 ## Usage
