@@ -17,8 +17,8 @@ class PublicV2ApiTest < Minitest::Test
       'level'                  => 0,
       'minimum_trading_volume' => 0,
       'minimum_staking_volume' => 0,
-      'maker_fee'              => 0.0005,
-      'taker_fee'              => 0.0015,
+      'maker_fee'              => 0.0008,
+      'taker_fee'              => 0.0016,
     }
     assert_equal(expected, response[0])
   end
@@ -34,8 +34,8 @@ class PublicV2ApiTest < Minitest::Test
       'level'                  => 0,
       'minimum_trading_volume' => 0,
       'minimum_staking_volume' => 0,
-      'maker_fee'              => 0.0005,
-      'taker_fee'              => 0.0015,
+      'maker_fee'              => 0.0008,
+      'taker_fee'              => 0.0016,
     }
     assert_equal(expected, response)
   end
@@ -120,7 +120,7 @@ class PublicV2ApiTest < Minitest::Test
       'market_status'        => 'active',
       'base_unit'            => 'max',
       'base_unit_precision'  => 2,
-      'min_base_amount'      => 25.0,
+      'min_base_amount'      => 28.0,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 4,
       'min_quote_amount'     => 250.0,
@@ -134,7 +134,7 @@ class PublicV2ApiTest < Minitest::Test
       'market_status'        => 'active',
       'base_unit'            => 'btc',
       'base_unit_precision'  => 8,
-      'min_base_amount'      => 0.00008,
+      'min_base_amount'      => 0.0001,
       'quote_unit'           => 'twd',
       'quote_unit_precision' => 1,
       'min_quote_amount'     => 250.0,
