@@ -20,6 +20,14 @@ A ruby implementation of MAX exchange API
 
 ## Supports
 - Ruby 2.2 ~ 2.7, 3.0 ~ 3.3
+- 
+## Table of contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Configuration](#configuration)
+4. [Public Api Examples](#public-api-examples)
+5. [Private Api Examples](#private-api-examples)
 
 ## Installation
 
@@ -66,7 +74,17 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 
 ## Usage
 
-### Public Api Examples
+```rb
+@public_api = MaxExchangeApi::PublicV2Api.new
+@public_api.depth('usdttwd')
+
+access_key, secret_key = File.read('secret').split(',')
+@private_api = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
+@private_api.create_order!('usdttwd', 'sell', 1000, price: 31.35)
+@private_api.create_order!('usdttwd', 'buy', 1000, price: 31.15)
+```
+
+## Public Api Examples
 
 ```rb
 @api_v2 = MaxExchangeApi::PublicV2Api.new
@@ -241,7 +259,7 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 
 ---
 
-### Private Api Examples
+## Private Api Examples
 
 ```rb
 access_key = 'YOUR_ACCESS_KEY'
