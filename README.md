@@ -91,7 +91,7 @@ access_key, secret_key = File.read('secret').split(',')
 @api_v3 = MaxExchangeApi::PublicV3Api.new
 ```
 
-#### [GET /api/v2/vip_levels](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevels)
+#### [GET /api/v2/vip_levels](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevels)
 
 > Get all VIP level fees.
 
@@ -103,7 +103,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/vip_levels/{level}](https://max.maicoin.com/documents/api_list#!/public/getApiV2VipLevelsLevel)
+#### [GET /api/v2/vip_levels/{level}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevelsLevel)
 
 > Get VIP level fee by level.
 
@@ -115,7 +115,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/currencies](https://max.maicoin.com/documents/api_list#!/public/getApiV2Currencies)
+#### [GET /api/v2/currencies](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Currencies)
 
 > Get all available currencies.
 
@@ -127,7 +127,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/k](https://max.maicoin.com/documents/api_list#!/public/getApiV2K)
+#### [GET /api/v2/k](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2K)
 
 > Get OHLC(k line) of a specific market.
 
@@ -143,7 +143,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/depth](https://max.maicoin.com/documents/api_list#!/public/getApiV2Depth)
+#### [GET /api/v2/depth](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Depth)
 
 > Get depth of a specified market.
 
@@ -159,7 +159,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/trades](https://max.maicoin.com/documents/api_list#!/public/getApiV2Trades)
+#### [GET /api/v2/trades](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Trades)
 
 > Get recent trades on market, sorted in reverse creation order.
 
@@ -185,7 +185,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/markets](https://max.maicoin.com/documents/api_list#!/public/getApiV2Markets)
+#### [GET /api/v2/markets](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Markets)
 
 > Get all available markets.
 
@@ -197,7 +197,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/summary](https://max.maicoin.com/documents/api_list#!/public/getApiV2Summary)
+#### [GET /api/v2/summary](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Summary)
 
 > Overview of market data for all tickers.
 
@@ -209,7 +209,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/tickers/{path_market}](https://max.maicoin.com/documents/api_list#!/public/getApiV2TickersPathMarket)
+#### [GET /api/v2/tickers/{path_market}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2TickersPathMarket)
 
 > Get ticker of specific market.
 
@@ -221,7 +221,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/tickers](https://max.maicoin.com/documents/api_list#!/public/getApiV2Tickers)
+#### [GET /api/v2/tickers](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Tickers)
 
 > Get ticker of all markets.
 
@@ -233,7 +233,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v2/timestamp](https://max.maicoin.com/documents/api_list#!/public/getApiV2Timestamp)
+#### [GET /api/v2/timestamp](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Timestamp)
 
 > Get server current time, in seconds since Unix epoch.
 
