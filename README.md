@@ -284,9 +284,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get personal profile information
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.member_profile
 ```
@@ -295,9 +292,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get your profile and accounts information
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.me
 ```
@@ -305,9 +299,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/members/vip_level](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersVipLevel)
 
 > get VIP level info
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 @api_v2.vip_level
@@ -318,9 +309,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get personal accounts information
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.accounts
 ```
@@ -328,9 +316,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/members/accounts/{path_currency}](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersAccountsPathCurrency)
 
 > get personal accounts information of a currency
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 @api_v2.account(currnecy)
@@ -340,9 +325,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/orders](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Orders)
 
 > get your orders, results is paginated.
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -365,9 +347,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get a specific order.
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 # use max unique order id
 @api.order(123456)
@@ -379,9 +358,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [POST /api/v2/orders/clear](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2OrdersClear)
 
 > cancel all your orders with given market and side
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -395,9 +371,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > cancel an order
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 # use max unique order id
 @api.cancel_order!(123456)
@@ -409,9 +382,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [POST /api/v2/orders](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2Orders)
 
 > create a sell/buy order
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -434,9 +404,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 # use default parameters
 @api.create_orders!('maxtwd', [
@@ -456,9 +423,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get your executed trades related to a order
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 # use max unique order id
 @api_v2.my_trades_of_order(123456)
@@ -470,9 +434,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/trades/my](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2TradesMy)
 
 > get your executed trades, sorted in reverse creation order
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -497,9 +458,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get your deposits history
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 # use default parameters
 @api_v2.deposits('max')
@@ -522,9 +480,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get details of a specific deposit
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.deposit('transaction_id')
 ```
@@ -532,9 +487,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/deposit_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2DepositAddresses)
 
 > The addresses could be empty before generated, please call POST /deposit_addresses in that case
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -548,9 +500,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.create_deposit_addresses!('twd')
 ```
@@ -559,9 +508,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/withdrawals](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Withdrawals)
 
 > get your external withdrawals history
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -585,9 +531,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get details of a specific external withdraw
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.withdrawal('withdraw_id')
 ```
@@ -596,9 +539,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > submit a withdrawal. IP whitelist for api token is required.
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.create_withdrawal!('twd', 'withdraw_address_id', 100000)
 ```
@@ -606,9 +546,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/withdraw_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2WithdrawAddresses)
 
 > get withdraw addresses
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -622,9 +559,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/internal_transfers](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2InternalTransfers)
 
 > get internal transfers history
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -647,9 +581,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get details of a specific internal transfer
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.internal_transfer('internal_transfer_id')
 ```
@@ -658,9 +589,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/rewards](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Rewards)
 
 > get rewards history
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -681,9 +609,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/rewards/{path_reward_type}](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2RewardsPathRewardType)
 
 > get specific rewards history
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
@@ -706,9 +631,6 @@ secret_key = 'YOUR_SECRET_KEY'
 
 > get max rewards yesterday
 
-<details>
-  <summary>Show code</summary>
-
 ```rb
 @api_v2.max_rewards_yesterday
 ```
@@ -716,9 +638,6 @@ secret_key = 'YOUR_SECRET_KEY'
 #### [GET /api/v2/yields](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Yields)
 
 > get yields history
-
-<details>
-  <summary>Show code</summary>
 
 ```rb
 # use default parameters
