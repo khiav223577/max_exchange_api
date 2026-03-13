@@ -14,7 +14,7 @@ A ruby implementation of MAX exchange API
 ## Documentations
 
 * [REST API Introduction](https://max.maicoin.com/documents/api_v2)
-* [REST API End Points](https://max.maicoin.com/documents/api_list)
+* [MAX V3 RESTful API List](https://max-api.maicoin.com/doc/v3.html)
 * [WebSocket API Documentation](https://maicoin.github.io/max-websocket-docs/)
 
 
@@ -303,7 +303,7 @@ access_key, secret_key = File.read('secret').split(',')
 ```
 </details>
 
-#### [GET /api/v3/wallet/m/limits](https://max.maicoin.com/documents/api_list/v3#tag/Public/operation/getApiV3WalletMLimits)
+#### [GET /api/v3/wallet/m/limits](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMLimits)
 
 > Get total available loan amount
 
@@ -328,7 +328,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 
 ### User
-#### [GET /api/v2/members/profile](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersProfile)
+#### [GET /api/v2/members/profile](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersProfile)
 
 > get personal profile information
 
@@ -340,7 +340,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/members/me](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersMe)
+#### [GET /api/v2/members/me](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersMe)
 
 > get your profile and accounts information
 
@@ -352,7 +352,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/members/vip_level](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersVipLevel)
+#### [GET /api/v2/members/vip_level](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersVipLevel)
 
 > get VIP level info
 
@@ -365,7 +365,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Account
-#### [GET /api/v2/members/accounts](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccounts)
+#### [GET /api/v2/members/accounts](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersAccounts)
 
 > get personal accounts information
 
@@ -377,7 +377,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/members/accounts/{path_currency}](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersAccountsPathCurrency)
+#### [GET /api/v2/members/accounts/{path_currency}](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersAccountsPathCurrency)
 
 > get personal accounts information of a currency
 
@@ -390,7 +390,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Order
-#### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
+#### [GET /api/v2/orders](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Orders)
 
 > get your orders, results is paginated.
 
@@ -415,7 +415,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/order](https://max.maicoin.com/documents/api_list#!/private/getApiV2Order)
+#### [GET /api/v2/order](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Order)
 
 > get a specific order.
 
@@ -431,7 +431,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/orders/clear](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersClear)
+#### [POST /api/v2/orders/clear](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2OrdersClear)
 
 > cancel all your orders with given market and side
 
@@ -447,7 +447,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/order/delete](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrderDelete)
+#### [POST /api/v2/order/delete](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2OrderDelete)
 
 > cancel an order
 
@@ -463,7 +463,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/postApiV2Orders)
+#### [POST /api/v2/orders](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2Orders)
 
 > create a sell/buy order
 
@@ -488,7 +488,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/orders/multi/onebyone](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersMultiOnebyone)
+#### [POST /api/v2/orders/multi/onebyone](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2OrdersMultiOnebyone)
 
 > Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
 
@@ -511,7 +511,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Trade
-#### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
+#### [GET /api/v2/trades/my/of_order](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2TradesMyOfOrder)
 
 > get your executed trades related to a order
 
@@ -527,7 +527,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
+#### [GET /api/v2/trades/my](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2TradesMy)
 
 > get your executed trades, sorted in reverse creation order
 
@@ -554,7 +554,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Deposit
-#### [GET /api/v2/deposits](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposits)
+#### [GET /api/v2/deposits](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Deposits)
 
 > get your deposits history
 
@@ -580,7 +580,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/deposit](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposit)
+#### [GET /api/v2/deposit](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Deposit)
 
 > get details of a specific deposit
 
@@ -592,7 +592,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2DepositAddresses)
+#### [GET /api/v2/deposit_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2DepositAddresses)
 
 > The addresses could be empty before generated, please call POST /deposit_addresses in that case
 
@@ -608,7 +608,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/postApiV2DepositAddresses)
+#### [POST /api/v2/deposit_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2DepositAddresses)
 
 > Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
 
@@ -621,7 +621,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Withdrawal
-#### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
+#### [GET /api/v2/withdrawals](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Withdrawals)
 
 > get your external withdrawals history
 
@@ -647,7 +647,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawal)
+#### [GET /api/v2/withdrawal](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Withdrawal)
 
 > get details of a specific external withdraw
 
@@ -659,7 +659,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [POST /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/postApiV2Withdrawal)
+#### [POST /api/v2/withdrawal](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2Withdrawal)
 
 > submit a withdrawal. IP whitelist for api token is required.
 
@@ -671,7 +671,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/withdraw_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2WithdrawAddresses)
+#### [GET /api/v2/withdraw_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2WithdrawAddresses)
 
 > get withdraw addresses
 
@@ -688,7 +688,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Internal Transfer
-#### [GET /api/v2/internal_transfers](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfers)
+#### [GET /api/v2/internal_transfers](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2InternalTransfers)
 
 > get internal transfers history
 
@@ -713,7 +713,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/internal_transfer](https://max.maicoin.com/documents/api_list#!/private/getApiV2InternalTransfer)
+#### [GET /api/v2/internal_transfer](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2InternalTransfer)
 
 > get details of a specific internal transfer
 
@@ -726,7 +726,7 @@ secret_key = 'YOUR_SECRET_KEY'
 </details>
 
 ### Reward
-#### [GET /api/v2/rewards](https://max.maicoin.com/documents/api_list#!/private/getApiV2Rewards)
+#### [GET /api/v2/rewards](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Rewards)
 
 > get rewards history
 
@@ -750,7 +750,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/rewards/{path_reward_type}](https://max.maicoin.com/documents/api_list#!/private/getApiV2RewardsPathRewardType)
+#### [GET /api/v2/rewards/{path_reward_type}](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2RewardsPathRewardType)
 
 > get specific rewards history
 
@@ -775,7 +775,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/max_rewards/yesterday](https://max.maicoin.com/documents/api_list#!/private/getApiV2MaxRewardsYesterday)
+#### [GET /api/v2/max_rewards/yesterday](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MaxRewardsYesterday)
 
 > get max rewards yesterday
 
@@ -787,7 +787,7 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-#### [GET /api/v2/yields](https://max.maicoin.com/documents/api_list#!/private/getApiV2Yields)
+#### [GET /api/v2/yields](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Yields)
 
 > get yields history
 
