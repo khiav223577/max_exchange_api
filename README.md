@@ -23,11 +23,69 @@ A ruby implementation of MAX exchange API
 
 ## Table of contents
 
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Configuration](#configuration)
-4. [Public Api Examples](#public-api-examples)
-5. [Private Api Examples](#private-api-examples)
+<!-- TOC -->
+* [MAX Exchange API Ruby SDK](#max-exchange-api-ruby-sdk)
+  * [Documentations](#documentations)
+  * [Supports](#supports)
+  * [Table of contents](#table-of-contents)
+  * [Installation](#installation)
+  * [Configuration](#configuration)
+    * [Set timeout time](#set-timeout-time)
+    * [Logging](#logging)
+  * [Usage](#usage)
+  * [Public Api Examples](#public-api-examples)
+      * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
+      * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
+      * [GET /api/v2/currencies](#get-apiv2currencies)
+      * [GET /api/v2/k](#get-apiv2k)
+      * [GET /api/v2/depth](#get-apiv2depth)
+      * [GET /api/v2/trades](#get-apiv2trades)
+      * [GET /api/v2/markets](#get-apiv2markets)
+      * [GET /api/v2/summary](#get-apiv2summary)
+      * [GET /api/v2/tickers/{path_market}](#get-apiv2tickerspath_market)
+      * [GET /api/v2/tickers](#get-apiv2tickers)
+      * [GET /api/v2/timestamp](#get-apiv2timestamp)
+      * [GET /api/v3/wallet/m/limits](#get-apiv3walletmlimits)
+  * [Private Api Examples](#private-api-examples)
+    * [User](#user)
+      * [GET /api/v2/members/profile](#get-apiv2membersprofile)
+      * [GET /api/v2/members/me](#get-apiv2membersme)
+      * [GET /api/v2/members/vip_level](#get-apiv2membersvip_level)
+    * [Account](#account)
+      * [GET /api/v2/members/accounts](#get-apiv2membersaccounts)
+      * [GET /api/v2/members/accounts/{path_currency}](#get-apiv2membersaccountspath_currency)
+    * [Order](#order)
+      * [GET /api/v2/orders](#get-apiv2orders)
+      * [GET /api/v2/order](#get-apiv2order)
+      * [POST /api/v2/orders/clear](#post-apiv2ordersclear)
+      * [POST /api/v2/order/delete](#post-apiv2orderdelete)
+      * [POST /api/v2/orders](#post-apiv2orders)
+      * [POST /api/v2/orders/multi/onebyone](#post-apiv2ordersmultionebyone)
+    * [Trade](#trade)
+      * [GET /api/v2/trades/my/of_order](#get-apiv2tradesmyof_order)
+      * [GET /api/v2/trades/my](#get-apiv2tradesmy)
+    * [Deposit](#deposit)
+      * [GET /api/v2/deposits](#get-apiv2deposits)
+      * [GET /api/v2/deposit](#get-apiv2deposit)
+      * [GET /api/v2/deposit_addresses](#get-apiv2deposit_addresses)
+      * [POST /api/v2/deposit_addresses](#post-apiv2deposit_addresses)
+    * [Withdrawal](#withdrawal)
+      * [GET /api/v2/withdrawals](#get-apiv2withdrawals)
+      * [GET /api/v2/withdrawal](#get-apiv2withdrawal)
+      * [POST /api/v2/withdrawal](#post-apiv2withdrawal)
+      * [GET /api/v2/withdraw_addresses](#get-apiv2withdraw_addresses)
+    * [Internal Transfer](#internal-transfer)
+      * [GET /api/v2/internal_transfers](#get-apiv2internal_transfers)
+      * [GET /api/v2/internal_transfer](#get-apiv2internal_transfer)
+    * [Reward](#reward)
+      * [GET /api/v2/rewards](#get-apiv2rewards)
+      * [GET /api/v2/rewards/{path_reward_type}](#get-apiv2rewardspath_reward_type)
+      * [GET /api/v2/max_rewards/yesterday](#get-apiv2max_rewardsyesterday)
+      * [GET /api/v2/yields](#get-apiv2yields)
+  * [Development](#development)
+  * [Contributing](#contributing)
+  * [License](#license)
+<!-- TOC -->
 
 ## Installation
 
@@ -269,101 +327,7 @@ secret_key = 'YOUR_SECRET_KEY'
 @api_v3 = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
 ```
 
-### Trade
-#### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
-
-> get your executed trades related to a order
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use max unique order id
-@api_v2.my_trades_of_order(123456)
-
-# use user specified order id
-@api_v2.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
-```
-</details>
-
-#### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
-
-> get your executed trades, sorted in reverse creation order
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api_v2.my_trades('btctwd')
-
-# provide all possible parameters
-@api_v2.my_trades(
-  'maxtwd',
-  timestamp: 1624705402,
-  from: 68444,
-  to: 69444,
-  order_by: 'asc',
-  pagination: true,
-  page: 3,
-  limit: 15,
-  offset: 5,
-)
-```
-</details>
-
-### Withdrawal
-#### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
-
-> get your external withdrawals history
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api_v2.withdrawals('max')
-
-# provide all possible parameters
-@api_v2.withdrawals(
-  'max',
-  'confirmed',
-  from: 68444,
-  to: 69444,
-  state: 'confirmed',
-  pagination: true,
-  page: 3,
-  limit: 15,
-  offset: 5,
-)
-```
-</details>
-
-#### [GET /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawal)
-
-> get details of a specific external withdraw
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-@api_v2.withdrawal('withdraw_id')
-```
-</details>
-
-#### [POST /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/postApiV2Withdrawal)
-
-> submit a withdrawal. IP whitelist for api token is required.
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-@api_v2.create_withdrawal!('twd', 'withdraw_address_id', 100000)
-```
-</details>
-
-### Profile
+### User
 #### [GET /api/v2/members/profile](https://max.maicoin.com/documents/api_list#!/private/getApiV2MembersProfile)
 
 > get personal profile information
@@ -425,6 +389,170 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
+### Order
+#### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
+
+> get your orders, results is paginated.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api_v2.orders('maxtwd')
+
+# provide all possible parameters
+@api.orders(
+  'maxtwd',
+  state: 'done',
+  order_by: 'desc',
+  group_id: 12345,
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/order](https://max.maicoin.com/documents/api_list#!/private/getApiV2Order)
+
+> get a specific order.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.order(123456)
+
+# use user specified order id
+@api.order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [POST /api/v2/orders/clear](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersClear)
+
+> cancel all your orders with given market and side
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.cancel_orders!
+
+# provide all possible parameters
+@api.cancel_orders!(market: 'maxtwd', side: 'sell', group_id: '123456')
+```
+</details>
+
+#### [POST /api/v2/order/delete](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrderDelete)
+
+> cancel an order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api.cancel_order!(123456)
+
+# use user specified order id
+@api.cancel_order!('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [POST /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/postApiV2Orders)
+
+> create a sell/buy order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_order!('maxtwd', 'buy', 1000, price: 7.5)
+
+# provide all possible parameters
+@api.create_order!(
+  'maxtwd',
+  'buy',
+  1000,
+  price: 7.5,
+  client_oid: 'MY_ORDER_ID_12345',
+  stop_price: 8,
+  ord_type: 'limit',
+  group_id: 12345678,
+)
+```
+</details>
+
+#### [POST /api/v2/orders/multi/onebyone](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersMultiOnebyone)
+
+> Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: '7.5' },
+  { side: 'buy', volume: '1500', price: '7.2' },
+])
+
+# provide all possible parameters
+@api.create_orders!('maxtwd', [
+  { side: 'buy', volume: '1000', price: '7.5', client_oid: 'MY_ORDER_ID_12345', stop_price: '8', ord_type: 'limit' },
+  { side: 'buy', volume: '1500', price: '7.2', client_oid: 'MY_ORDER_ID_12346', stop_price: '8', ord_type: 'limit' },
+], group_id: 12345)
+```
+</details>
+
+### Trade
+#### [GET /api/v2/trades/my/of_order](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMyOfOrder)
+
+> get your executed trades related to a order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use max unique order id
+@api_v2.my_trades_of_order(123456)
+
+# use user specified order id
+@api_v2.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
+```
+</details>
+
+#### [GET /api/v2/trades/my](https://max.maicoin.com/documents/api_list#!/private/getApiV2TradesMy)
+
+> get your executed trades, sorted in reverse creation order
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api_v2.my_trades('btctwd')
+
+# provide all possible parameters
+@api_v2.my_trades(
+  'maxtwd',
+  timestamp: 1624705402,
+  from: 68444,
+  to: 69444,
+  order_by: 'asc',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
 ### Deposit
 #### [GET /api/v2/deposits](https://max.maicoin.com/documents/api_list#!/private/getApiV2Deposits)
 
@@ -464,7 +592,6 @@ secret_key = 'YOUR_SECRET_KEY'
 ```
 </details>
 
-### Address
 #### [GET /api/v2/deposit_addresses](https://max.maicoin.com/documents/api_list#!/private/getApiV2DepositAddresses)
 
 > The addresses could be empty before generated, please call POST /deposit_addresses in that case
@@ -490,6 +617,57 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 @api_v2.create_deposit_addresses!('twd')
+```
+</details>
+
+### Withdrawal
+#### [GET /api/v2/withdrawals](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawals)
+
+> get your external withdrawals history
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+# use default parameters
+@api_v2.withdrawals('max')
+
+# provide all possible parameters
+@api_v2.withdrawals(
+  'max',
+  'confirmed',
+  from: 68444,
+  to: 69444,
+  state: 'confirmed',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+</details>
+
+#### [GET /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/getApiV2Withdrawal)
+
+> get details of a specific external withdraw
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api_v2.withdrawal('withdraw_id')
+```
+</details>
+
+#### [POST /api/v2/withdrawal](https://max.maicoin.com/documents/api_list#!/private/postApiV2Withdrawal)
+
+> submit a withdrawal. IP whitelist for api token is required.
+
+<details>
+  <summary>Show code</summary>
+
+```rb
+@api_v2.create_withdrawal!('twd', 'withdraw_address_id', 100000)
 ```
 </details>
 
@@ -630,127 +808,6 @@ secret_key = 'YOUR_SECRET_KEY'
   limit: 15,
   offset: 5,
 )
-```
-</details>
-
-### Order
-#### [GET /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/getApiV2Orders)
-
-> get your orders, results is paginated.
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api_v2.orders('maxtwd')
-
-# provide all possible parameters
-@api.orders(
-  'maxtwd',
-  state: 'done',
-  order_by: 'desc',
-  group_id: 12345,
-  pagination: true,
-  page: 3,
-  limit: 15,
-  offset: 5,
-)
-```
-</details>
-
-#### [GET /api/v2/order](https://max.maicoin.com/documents/api_list#!/private/getApiV2Order)
-
-> get a specific order.
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use max unique order id
-@api.order(123456)
-
-# use user specified order id
-@api.order('MY_ORDER_123456', use_client_id: true)
-```
-</details>
-
-#### [POST /api/v2/orders/clear](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersClear)
-
-> cancel all your orders with given market and side
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api.cancel_orders!
-
-# provide all possible parameters
-@api.cancel_orders!(market: 'maxtwd', side: 'sell', group_id: '123456')
-```
-</details>
-
-#### [POST /api/v2/order/delete](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrderDelete)
-
-> cancel an order
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use max unique order id
-@api.cancel_order!(123456)
-
-# use user specified order id
-@api.cancel_order!('MY_ORDER_123456', use_client_id: true)
-```
-</details>
-
-#### [POST /api/v2/orders](https://max.maicoin.com/documents/api_list#!/private/postApiV2Orders)
-
-> create a sell/buy order
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api.create_order!('maxtwd', 'buy', 1000, price: 7.5)
-
-# provide all possible parameters
-@api.create_order!(
-  'maxtwd',
-  'buy',
-  1000,
-  price: 7.5,
-  client_oid: 'MY_ORDER_ID_12345',
-  stop_price: 8,
-  ord_type: 'limit',
-  group_id: 12345678,
-)
-```
-</details>
-
-#### [POST /api/v2/orders/multi/onebyone](https://max.maicoin.com/documents/api_list#!/private/postApiV2OrdersMultiOnebyone)
-
-> Create multiple sell/buy orders, orders may be partially accepted, please put your orders as an array in json body.
-
-<details>
-  <summary>Show code</summary>
-
-```rb
-# use default parameters
-@api.create_orders!('maxtwd', [
-  { side: 'buy', volume: '1000', price: '7.5' },
-  { side: 'buy', volume: '1500', price: '7.2' },
-])
-
-# provide all possible parameters
-@api.create_orders!('maxtwd', [
-  { side: 'buy', volume: '1000', price: '7.5', client_oid: 'MY_ORDER_ID_12345', stop_price: '8', ord_type: 'limit' },
-  { side: 'buy', volume: '1500', price: '7.2', client_oid: 'MY_ORDER_ID_12346', stop_price: '8', ord_type: 'limit' },
-], group_id: 12345)
 ```
 </details>
 

@@ -2,7 +2,7 @@
 
 module MaxExchangeApi
   module PrivateV2
-    module WalletApi
+    module AccountApi
       def accounts
         send_request(:get, '/members/accounts', {})
       end

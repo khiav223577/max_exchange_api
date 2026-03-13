@@ -4,7 +4,6 @@ require 'max_exchange_api/base_api'
 
 module MaxExchangeApi
   class PublicApi < BaseApi
-
     protected
 
     def send_request(method, path, query)
