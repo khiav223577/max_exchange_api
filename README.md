@@ -29,10 +29,10 @@ A ruby implementation of MAX exchange API
   * [Supports](#supports)
   * [Table of contents](#table-of-contents)
   * [Installation](#installation)
+  * [Usage](#usage)
   * [Configuration](#configuration)
     * [Set timeout time](#set-timeout-time)
     * [Logging](#logging)
-  * [Usage](#usage)
   * [Public Api Examples](#public-api-examples)
       * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
       * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
@@ -101,6 +101,18 @@ Or install it yourself as:
 
     $ gem install max_exchange_api
 
+## Usage
+
+```rb
+@public_api = MaxExchangeApi::PublicV2Api.new
+@public_api.depth('usdttwd')
+
+access_key, secret_key = File.read('secret').split(',')
+@private_api = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
+@private_api.create_order!('usdttwd', 'sell', 1000, price: 31.35)
+@private_api.create_order!('usdttwd', 'buy', 1000, price: 31.15)
+```
+
 ## Configuration
 
 ### Set timeout time
@@ -128,18 +140,6 @@ MaxExchangeApi.default_config.logger = Logger.new('log/api.log')
 # Create an api instance with custom logger
 api = MaxExchangeApi::PublicV3Api.new(config: { logger: Logger.new(STDOUT) })
 api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
-```
-
-## Usage
-
-```rb
-@public_api = MaxExchangeApi::PublicV2Api.new
-@public_api.depth('usdttwd')
-
-access_key, secret_key = File.read('secret').split(',')
-@private_api = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
-@private_api.create_order!('usdttwd', 'sell', 1000, price: 31.35)
-@private_api.create_order!('usdttwd', 'buy', 1000, price: 31.15)
 ```
 
 ## Public Api Examples
