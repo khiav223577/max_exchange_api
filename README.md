@@ -47,6 +47,8 @@ A ruby implementation of MAX exchange API
       * [GET /api/v2/timestamp](#get-apiv2timestamp)
       * [GET /api/v3/wallet/m/limits](#get-apiv3walletmlimits)
   * [Private V3 Api Examples](#private-v3-api-examples)
+    * [User](#user)
+      * [GET /api/v3/info](#get-apiv3info)
     * [Order](#order)
       * [GET /api/v3/wallet/{wallet_type}/orders/open](#get-apiv3walletwallet_typeordersopen)
       * [GET /api/v3/wallet/{wallet_type}/orders/closed](#get-apiv3walletwallet_typeordersclosed)
@@ -56,7 +58,7 @@ A ruby implementation of MAX exchange API
       * [DELETE /api/v3/wallet/{wallet_type}/order](#delete-apiv3walletwallet_typeorder)
       * [DELETE /api/v3/order](#delete-apiv3order)
   * [Private V2 Api Examples](#private-v2-api-examples)
-    * [User](#user)
+    * [User](#user-1)
       * [GET /api/v2/members/profile](#get-apiv2membersprofile)
       * [GET /api/v2/members/me](#get-apiv2membersme)
       * [GET /api/v2/members/vip_level](#get-apiv2membersvip_level)
@@ -285,6 +287,15 @@ access_key = 'YOUR_ACCESS_KEY'
 secret_key = 'YOUR_SECRET_KEY'
 
 @api_v3 = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
+```
+
+### User
+#### [GET /api/v3/info](https://max-api.maicoin.com/doc/v3.html#tag/User/operation/getApiV3Info)
+
+> Get user information
+
+```rb
+@api_v3.member_info
 ```
 
 ### Order
