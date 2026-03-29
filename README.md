@@ -49,6 +49,8 @@ A ruby implementation of MAX exchange API
   * [Private V3 Api Examples](#private-v3-api-examples)
     * [User](#user)
       * [GET /api/v3/info](#get-apiv3info)
+    * [Account](#account)
+      * [GET api/v3/wallet/{wallet_type}/accounts](#get-apiv3walletwallet_typeaccounts)
     * [Convert](#convert)
       * [GET /api/v3/converts](#get-apiv3converts)
       * [GET /api/v3/convert](#get-apiv3convert)
@@ -78,7 +80,7 @@ A ruby implementation of MAX exchange API
       * [GET /api/v2/members/profile](#get-apiv2membersprofile)
       * [GET /api/v2/members/me](#get-apiv2membersme)
       * [GET /api/v2/members/vip_level](#get-apiv2membersvip_level)
-    * [Account](#account)
+    * [Account](#account-1)
       * [GET /api/v2/members/accounts](#get-apiv2membersaccounts)
       * [GET /api/v2/members/accounts/{path_currency}](#get-apiv2membersaccountspath_currency)
     * [Order](#order-1)
@@ -305,6 +307,18 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 @private_v3_api.member_info
+```
+
+### Account
+#### [GET api/v3/wallet/{wallet_type}/accounts](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletPathWalletTypeAccounts)
+
+> Get your account balance with all supported currencies by different wallet type
+
+```rb
+@private_v3_api.accounts
+
+# provide all possible parameters
+@private_v3_api.accounts(wallet_type: 'm', currency: 'usdt')
 ```
 
 ### Convert
