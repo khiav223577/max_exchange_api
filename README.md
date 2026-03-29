@@ -84,6 +84,10 @@ A ruby implementation of MAX exchange API
       * [GET /api/v2/tickers/{path_market}](#get-apiv2tickerspath_market)
       * [GET /api/v2/tickers](#get-apiv2tickers)
       * [GET /api/v2/timestamp](#get-apiv2timestamp)
+    * [Deposit](#deposit)
+      * [GET /api/v3/deposit_address](#get-apiv3deposit_address)
+      * [GET /api/v3/deposits](#get-apiv3deposits)
+      * [GET /api/v3/deposit](#get-apiv3deposit)
   * [Private V2 Api Examples](#private-v2-api-examples)
     * [User](#user-1)
       * [GET /api/v2/members/profile](#get-apiv2membersprofile)
@@ -102,7 +106,7 @@ A ruby implementation of MAX exchange API
     * [Trade](#trade)
       * [GET /api/v2/trades/my/of_order](#get-apiv2tradesmyof_order)
       * [GET /api/v2/trades/my](#get-apiv2tradesmy)
-    * [Deposit](#deposit)
+    * [Deposit](#deposit-1)
       * [GET /api/v2/deposits](#get-apiv2deposits)
       * [GET /api/v2/deposit](#get-apiv2deposit)
       * [GET /api/v2/deposit_addresses](#get-apiv2deposit_addresses)
@@ -701,6 +705,44 @@ secret_key = 'YOUR_SECRET_KEY'
 ```rb
 @private_v2_api.timestamp
 >>>>>>> 81e2138 (adjust readme sections)
+```
+
+### Deposit
+#### [GET /api/v3/deposit_address](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3DepositAddress)
+
+> Get user deposit address by currency version
+
+```rb
+@private_v2_api.deposit_address('bscusdt')
+```
+
+#### [GET /api/v3/deposits](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Deposits)
+
+> get your deposits history
+
+```rb
+# use default parameters
+@private_v2_api.deposits
+
+# provide all possible parameters
+@private_v2_api.deposits(
+  currency: 'max',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/deposit](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Deposit)
+
+> Get details of a specific deposit
+
+```rb
+# Query by uuid
+@private_v2_api.deposit(uuid: '18022603540001')
+
+# Query by txid
+@private_v2_api.deposit(txid: '0x8daa98e07886985bd6a142cd81b83582d6085f7eb931dc4984c18c84f2a845e0')
 ```
 
 ## Private V2 Api Examples
