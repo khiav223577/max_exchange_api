@@ -33,18 +33,7 @@ A ruby implementation of MAX exchange API
   * [Configuration](#configuration)
     * [Set timeout time](#set-timeout-time)
     * [Logging](#logging)
-  * [Public Api Examples](#public-api-examples)
-      * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
-      * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
-      * [GET /api/v2/currencies](#get-apiv2currencies)
-      * [GET /api/v2/k](#get-apiv2k)
-      * [GET /api/v2/depth](#get-apiv2depth)
-      * [GET /api/v2/trades](#get-apiv2trades)
-      * [GET /api/v2/markets](#get-apiv2markets)
-      * [GET /api/v2/summary](#get-apiv2summary)
-      * [GET /api/v2/tickers/{path_market}](#get-apiv2tickerspath_market)
-      * [GET /api/v2/tickers](#get-apiv2tickers)
-      * [GET /api/v2/timestamp](#get-apiv2timestamp)
+  * [Public V3 Api Examples](#public-v3-api-examples)
       * [GET /api/v3/wallet/m/limits](#get-apiv3walletmlimits)
   * [Private V3 Api Examples](#private-v3-api-examples)
     * [User](#user)
@@ -61,6 +50,18 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/order](#get-apiv3order)
       * [DELETE /api/v3/wallet/{wallet_type}/order](#delete-apiv3walletwallet_typeorder)
       * [DELETE /api/v3/order](#delete-apiv3order)
+  * [Public V2 Api Examples](#public-v2-api-examples)
+      * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
+      * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
+      * [GET /api/v2/currencies](#get-apiv2currencies)
+      * [GET /api/v2/k](#get-apiv2k)
+      * [GET /api/v2/depth](#get-apiv2depth)
+      * [GET /api/v2/trades](#get-apiv2trades)
+      * [GET /api/v2/markets](#get-apiv2markets)
+      * [GET /api/v2/summary](#get-apiv2summary)
+      * [GET /api/v2/tickers/{path_market}](#get-apiv2tickerspath_market)
+      * [GET /api/v2/tickers](#get-apiv2tickers)
+      * [GET /api/v2/timestamp](#get-apiv2timestamp)
   * [Private V2 Api Examples](#private-v2-api-examples)
     * [User](#user-1)
       * [GET /api/v2/members/profile](#get-apiv2membersprofile)
@@ -119,13 +120,13 @@ Or install it yourself as:
 ## Usage
 
 ```rb
-@public_api = MaxExchangeApi::PublicV2Api.new
-@public_api.depth('usdttwd')
+@public_v3_api = MaxExchangeApi::PublicV3Api.new
+@public_v3_api.depth('usdttwd')
 
 access_key, secret_key = File.read('secret').split(',')
-@private_api = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
-@private_api.create_order!('usdttwd', 'sell', 1000, price: 31.35)
-@private_api.create_order!('usdttwd', 'buy', 1000, price: 31.15)
+@private_v3_api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
+@private_v3_api.create_order!('usdttwd', 'sell', 1000, price: 31.35)
+@private_v3_api.create_order!('usdttwd', 'buy', 1000, price: 31.15)
 ```
 
 ## Configuration
@@ -157,121 +158,10 @@ api = MaxExchangeApi::PublicV3Api.new(config: { logger: Logger.new(STDOUT) })
 api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger: Logger.new(STDOUT) })
 ```
 
-## Public Api Examples
+## Public V3 Api Examples
 
 ```rb
-@api_v2 = MaxExchangeApi::PublicV2Api.new
-@api_v3 = MaxExchangeApi::PublicV3Api.new
-```
-
-#### [GET /api/v2/vip_levels](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevels)
-
-> Get all VIP level fees.
-
-```rb
-@api_v2.vip_levels
-```
-
-#### [GET /api/v2/vip_levels/{level}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevelsLevel)
-
-> Get VIP level fee by level.
-
-```rb
-@api_v2.vip_levels(2)
-```
-
-#### [GET /api/v2/currencies](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Currencies)
-
-> Get all available currencies.
-
-```rb
-@api_v2.currencies
-```
-
-#### [GET /api/v2/k](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2K)
-
-> Get OHLC(k line) of a specific market.
-
-```rb
-# use default parameters
-@api_v2.k('btctwd')
-
-# provide all possible parameters
-@api_v2.k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
-```
-
-#### [GET /api/v2/depth](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Depth)
-
-> Get depth of a specified market.
-
-```rb
-# use default parameters
-@api_v2.depth('maxtwd')
-
-# provide all possible parameters
-@api_v2.depth('maxtwd', limit: 10, sort_by_price: true)
-```
-
-#### [GET /api/v2/trades](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Trades)
-
-> Get recent trades on market, sorted in reverse creation order.
-
-```rb
-# use default parameters
-@api_v2.trades('btctwd')
-
-# provide all possible parameters
-@api_v2.trades(
-  'maxtwd', 
-  timestamp: 1624705402,
-  from: 68444,
-  to: 69444,
-  order_by: 'asc',
-  pagination: true,
-  page: 3,
-  limit: 15,
-  offset: 5,
-)
-```
-
-#### [GET /api/v2/markets](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Markets)
-
-> Get all available markets.
-
-```rb
-@api_v2.markets
-```
-
-#### [GET /api/v2/summary](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Summary)
-
-> Overview of market data for all tickers.
-
-```rb
-@api_v2.summary
-```
-
-#### [GET /api/v2/tickers/{path_market}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2TickersPathMarket)
-
-> Get ticker of specific market.
-
-```rb
-@api_v2.tickers('btctwd')
-```
-
-#### [GET /api/v2/tickers](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Tickers)
-
-> Get ticker of all markets.
-
-```rb
-@api_v2.tickers
-```
-
-#### [GET /api/v2/timestamp](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Timestamp)
-
-> Get server current time, in seconds since Unix epoch.
-
-```rb
-@api_v2.timestamp
+@public_v3_api = MaxExchangeApi::PublicV3Api.new
 ```
 
 #### [GET /api/v3/wallet/m/limits](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMLimits)
@@ -279,7 +169,7 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 > Get total available loan amount
 
 ```rb
-@api_v3.available_loan_amount
+@public_v3_api.available_loan_amount
 ```
 
 ---
@@ -290,7 +180,7 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 access_key = 'YOUR_ACCESS_KEY'
 secret_key = 'YOUR_SECRET_KEY'
 
-@api_v3 = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
+@private_v3_api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
 ```
 
 ### User
@@ -299,7 +189,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > Get user information
 
 ```rb
-@api_v3.member_info
+@private_v3_api.member_info
 ```
 
 ### Convert
@@ -308,10 +198,10 @@ secret_key = 'YOUR_SECRET_KEY'
 > Get convert orders history
 
 ```rb
-@api_v3.convert_orders
+@private_v3_api.convert_orders
 
 # provide all possible parameters
-@api_v3.convert_orders(
+@private_v3_api.convert_orders(
   timestamp: 1624705402,
   order_by: 'asc',
   limit: 15,
@@ -323,7 +213,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > Get details of a specific convert order
 
 ```rb
-@api_v3.convert_order('6322d9bd-736b-4f19-b862-829e75cae1ce')
+@private_v3_api.convert_order('6322d9bd-736b-4f19-b862-829e75cae1ce')
 ```
 
 #### [POST /api/v3/convert](https://max-api.maicoin.com/doc/v3.html#tag/Convert/operation/postApiV3Convert)
@@ -332,13 +222,13 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # Specify from amount
-@api_v3.create_convert_order(
+@private_v3_api.create_convert_order(
   from: ['0.52', 'usdt'],
   to: [nil, 'twd'],
 )
 
 # Specify to amount
-@api_v3.create_convert_order(
+@private_v3_api.create_convert_order(
   from: [nil, 'usdt'],
   to: ['16.58', 'twd'],
 )
@@ -351,10 +241,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v3.open_orders('maxtwd')
+@private_v3_api.open_orders('maxtwd')
 
 # provide all possible parameters
-@api_v3.open_orders(
+@private_v3_api.open_orders(
   'maxtwd',
   wallet_type: 'm', # 'spot' or 'm'
   timestamp: 1773734452000,
@@ -369,10 +259,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v3.closed_orders('maxtwd')
+@private_v3_api.closed_orders('maxtwd')
 
 # provide all possible parameters
-@api_v3.closed_orders(
+@private_v3_api.closed_orders(
   'maxtwd',
   wallet_type: 'm', # 'spot' or 'm'
   timestamp: 1773734452000,
@@ -387,10 +277,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v3.order_history('maxtwd')
+@private_v3_api.order_history('maxtwd')
 
 # provide all possible parameters
-@api_v3.orders_history(
+@private_v3_api.orders_history(
   'maxtwd',
   wallet_type: 'm', # 'spot' or 'm'
   from_id: 123456,
@@ -404,10 +294,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v3.create_order!('maxtwd', 'buy', 1000, price: 7.5)
+@private_v3_api.create_order!('maxtwd', 'buy', 1000, price: 7.5)
 
 # provide all possible parameters
-@api_v3.create_order!(
+@private_v3_api.create_order!(
   'maxtwd',
   'buy',
   1000,
@@ -427,10 +317,10 @@ secret_key = 'YOUR_SECRET_KEY'
 ```rb
 # use default parameters
 # use max unique order id
-@api_v3.order(123456)
+@private_v3_api.order(123456)
 
 # use user specified order id
-@api_v3.order(client_oid: 'MY_ORDER_123456')
+@private_v3_api.order(client_oid: 'MY_ORDER_123456')
 ```
 
 #### [DELETE /api/v3/wallet/{wallet_type}/order](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/deleteApiV3WalletPathWalletTypeOrders)
@@ -439,10 +329,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v3.cancel_orders!
+@private_v3_api.cancel_orders!
 
 # provide all possible parameters
-@api_v3.cancel_orders!(
+@private_v3_api.cancel_orders!(
   wallet_type: 'm', # 'spot' or 'm'
   market: 'maxtwd', 
   side: 'sell',
@@ -456,10 +346,127 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use max unique order id
-@api_v3.cancel_order!(123456)
+@private_v3_api.cancel_order!(123456)
 
 # use user specified order id
-@api_v3.cancel_order!(client_oid: 'MY_ORDER_123456')
+@private_v3_api.cancel_order!(client_oid: 'MY_ORDER_123456')
+```
+
+## Public V2 Api Examples
+
+```rb
+@private_v2_api = MaxExchangeApi::PublicV2Api.new
+```
+
+#### [GET /api/v2/vip_levels](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevels)
+
+> Get all VIP level fees.
+
+```rb
+@private_v2_api.vip_levels
+```
+
+#### [GET /api/v2/vip_levels/{level}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2VipLevelsLevel)
+
+> Get VIP level fee by level.
+
+```rb
+@private_v2_api.vip_levels(2)
+```
+
+#### [GET /api/v2/currencies](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Currencies)
+
+> Get all available currencies.
+
+```rb
+@private_v2_api.currencies
+```
+
+#### [GET /api/v2/k](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2K)
+
+> Get OHLC(k line) of a specific market.
+
+```rb
+# use default parameters
+@private_v2_api.k('btctwd')
+
+# provide all possible parameters
+@private_v2_api.k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
+```
+
+#### [GET /api/v2/depth](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Depth)
+
+> Get depth of a specified market.
+
+```rb
+# use default parameters
+@private_v2_api.depth('maxtwd')
+
+# provide all possible parameters
+@private_v2_api.depth('maxtwd', limit: 10, sort_by_price: true)
+```
+
+#### [GET /api/v2/trades](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Trades)
+
+> Get recent trades on market, sorted in reverse creation order.
+
+```rb
+# use default parameters
+@private_v2_api.trades('btctwd')
+
+# provide all possible parameters
+@private_v2_api.trades(
+  'maxtwd', 
+  timestamp: 1624705402,
+  from: 68444,
+  to: 69444,
+  order_by: 'asc',
+  pagination: true,
+  page: 3,
+  limit: 15,
+  offset: 5,
+)
+```
+
+#### [GET /api/v2/markets](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Markets)
+
+> Get all available markets.
+
+```rb
+@private_v2_api.markets
+```
+
+#### [GET /api/v2/summary](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Summary)
+
+> Overview of market data for all tickers.
+
+```rb
+@private_v2_api.summary
+```
+
+#### [GET /api/v2/tickers/{path_market}](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2TickersPathMarket)
+
+> Get ticker of specific market.
+
+```rb
+@private_v2_api.tickers('btctwd')
+```
+
+#### [GET /api/v2/tickers](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Tickers)
+
+> Get ticker of all markets.
+
+```rb
+@private_v2_api.tickers
+```
+
+#### [GET /api/v2/timestamp](https://max-api.maicoin.com/doc/v2.html#tag/public/operation/getApiV2Timestamp)
+
+> Get server current time, in seconds since Unix epoch.
+
+```rb
+@private_v2_api.timestamp
+>>>>>>> 81e2138 (adjust readme sections)
 ```
 
 ## Private V2 Api Examples
@@ -468,7 +475,7 @@ secret_key = 'YOUR_SECRET_KEY'
 access_key = 'YOUR_ACCESS_KEY'
 secret_key = 'YOUR_SECRET_KEY'
 
-@api_v2 = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
+@private_v2_api = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
 ```
 
 ### User
@@ -477,7 +484,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get personal profile information
 
 ```rb
-@api_v2.member_profile
+@private_v2_api.member_profile
 ```
 
 #### [GET /api/v2/members/me](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersMe)
@@ -485,7 +492,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get your profile and accounts information
 
 ```rb
-@api_v2.me
+@private_v2_api.me
 ```
 
 #### [GET /api/v2/members/vip_level](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersVipLevel)
@@ -493,7 +500,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get VIP level info
 
 ```rb
-@api_v2.vip_level
+@private_v2_api.vip_level
 ```
 
 ### Account
@@ -502,7 +509,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get personal accounts information
 
 ```rb
-@api_v2.accounts
+@private_v2_api.accounts
 ```
 
 #### [GET /api/v2/members/accounts/{path_currency}](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2MembersAccountsPathCurrency)
@@ -510,7 +517,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get personal accounts information of a currency
 
 ```rb
-@api_v2.account(currnecy)
+@private_v2_api.account(currnecy)
 ```
 
 ### Order
@@ -520,7 +527,7 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.orders('maxtwd')
+@private_v2_api.orders('maxtwd')
 
 # provide all possible parameters
 @api.orders(
@@ -617,10 +624,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use max unique order id
-@api_v2.my_trades_of_order(123456)
+@private_v2_api.my_trades_of_order(123456)
 
 # use user specified order id
-@api_v2.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
+@private_v2_api.my_trades_of_order('MY_ORDER_123456', use_client_id: true)
 ```
 
 #### [GET /api/v2/trades/my](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2TradesMy)
@@ -629,10 +636,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.my_trades('btctwd')
+@private_v2_api.my_trades('btctwd')
 
 # provide all possible parameters
-@api_v2.my_trades(
+@private_v2_api.my_trades(
   'maxtwd',
   timestamp: 1624705402,
   from: 68444,
@@ -652,10 +659,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.deposits('max')
+@private_v2_api.deposits('max')
 
 # provide all possible parameters
-@api_v2.deposits(
+@private_v2_api.deposits(
   'max',
   'confirmed',
   from: 68444,
@@ -673,7 +680,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get details of a specific deposit
 
 ```rb
-@api_v2.deposit('transaction_id')
+@private_v2_api.deposit('transaction_id')
 ```
 
 #### [GET /api/v2/deposit_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2DepositAddresses)
@@ -682,10 +689,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.deposit_addresses
+@private_v2_api.deposit_addresses
 
 # provide all possible parameters
-@api_v2.deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
+@private_v2_api.deposit_addresses(currency: 'twd', pagination: true, page: 3, limit: 15, offset: 5)
 ```
 
 #### [POST /api/v2/deposit_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2DepositAddresses)
@@ -693,7 +700,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
 
 ```rb
-@api_v2.create_deposit_addresses!('twd')
+@private_v2_api.create_deposit_addresses!('twd')
 ```
 
 ### Withdrawal
@@ -703,10 +710,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.withdrawals('max')
+@private_v2_api.withdrawals('max')
 
 # provide all possible parameters
-@api_v2.withdrawals(
+@private_v2_api.withdrawals(
   'max',
   'confirmed',
   from: 68444,
@@ -724,7 +731,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get details of a specific external withdraw
 
 ```rb
-@api_v2.withdrawal('withdraw_id')
+@private_v2_api.withdrawal('withdraw_id')
 ```
 
 #### [POST /api/v2/withdrawal](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2Withdrawal)
@@ -732,7 +739,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > submit a withdrawal. IP whitelist for api token is required.
 
 ```rb
-@api_v2.create_withdrawal!('twd', 'withdraw_address_id', 100000)
+@private_v2_api.create_withdrawal!('twd', 'withdraw_address_id', 100000)
 ```
 
 #### [GET /api/v2/withdraw_addresses](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2WithdrawAddresses)
@@ -741,10 +748,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.withdraw_addresses('twd')
+@private_v2_api.withdraw_addresses('twd')
 
 # provide all possible parameters
-@api_v2.withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
+@private_v2_api.withdraw_addresses('usdt', pagination: true, page: 3, limit: 15, offset: 5)
 ```
 
 ### Internal Transfer
@@ -754,10 +761,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.internal_transfers
+@private_v2_api.internal_transfers
 
 # provide all possible parameters
-@api_v2.internal_transfers(
+@private_v2_api.internal_transfers(
   currency: 'btc',
   side: 'in',
   from: 68444,
@@ -774,7 +781,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get details of a specific internal transfer
 
 ```rb
-@api_v2.internal_transfer('internal_transfer_id')
+@private_v2_api.internal_transfer('internal_transfer_id')
 ```
 
 ### Reward
@@ -784,10 +791,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.rewards
+@private_v2_api.rewards
 
 # provide all possible parameters
-@api_v2.rewards(
+@private_v2_api.rewards(
   currency: 'btc',
   from: 68444,
   to: 69444,
@@ -804,10 +811,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.rewards(reward_type: 'airdrop_rewards')
+@private_v2_api.rewards(reward_type: 'airdrop_rewards')
 
 # provide all possible parameters
-@api_v2.rewards(
+@private_v2_api.rewards(
   reward_type: 'airdrop_rewards',
   currency: 'btc',
   from: 68444,
@@ -824,7 +831,7 @@ secret_key = 'YOUR_SECRET_KEY'
 > get max rewards yesterday
 
 ```rb
-@api_v2.max_rewards_yesterday
+@private_v2_api.max_rewards_yesterday
 ```
 
 #### [GET /api/v2/yields](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/getApiV2Yields)
@@ -833,10 +840,10 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 # use default parameters
-@api_v2.yields
+@private_v2_api.yields
 
 # provide all possible parameters
-@api_v2.yields(
+@private_v2_api.yields(
   currency: 'usdt',
   from: 68444,
   to: 69444,
