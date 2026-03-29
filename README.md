@@ -49,6 +49,10 @@ A ruby implementation of MAX exchange API
   * [Private V3 Api Examples](#private-v3-api-examples)
     * [User](#user)
       * [GET /api/v3/info](#get-apiv3info)
+    * [Convert](#convert)
+      * [GET /api/v3/converts](#get-apiv3converts)
+      * [GET /api/v3/convert](#get-apiv3convert)
+      * [POST /api/v3/convert](#post-apiv3convert)
     * [Order](#order)
       * [GET /api/v3/wallet/{wallet_type}/orders/open](#get-apiv3walletwallet_typeordersopen)
       * [GET /api/v3/wallet/{wallet_type}/orders/closed](#get-apiv3walletwallet_typeordersclosed)
@@ -296,6 +300,48 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 @api_v3.member_info
+```
+
+### Convert
+#### [GET /api/v3/converts](https://max-api.maicoin.com/doc/v3.html#tag/Convert/operation/getApiV3Converts)
+
+> Get convert orders history
+
+```rb
+@api_v3.convert_orders
+
+# provide all possible parameters
+@api_v3.convert_orders(
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/convert](https://max-api.maicoin.com/doc/v3.html#tag/Convert/operation/getApiV3Convert)
+
+> Get details of a specific convert order
+
+```rb
+@api_v3.convert_order('6322d9bd-736b-4f19-b862-829e75cae1ce')
+```
+
+#### [POST /api/v3/convert](https://max-api.maicoin.com/doc/v3.html#tag/Convert/operation/postApiV3Convert)
+
+> Execute a convert (flash exchange) between two currencies
+
+```rb
+# Specify from amount
+@api_v3.create_convert_order(
+  from: ['0.52', 'usdt'],
+  to: [nil, 'twd'],
+)
+
+# Specify to amount
+@api_v3.create_convert_order(
+  from: [nil, 'usdt'],
+  to: ['16.58', 'twd'],
+)
 ```
 
 ### Order
