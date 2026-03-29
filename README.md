@@ -72,6 +72,10 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/order](#get-apiv3order)
       * [DELETE /api/v3/wallet/{wallet_type}/order](#delete-apiv3walletwallet_typeorder)
       * [DELETE /api/v3/order](#delete-apiv3order)
+    * [Deposit](#deposit)
+      * [GET /api/v3/deposit_address](#get-apiv3deposit_address)
+      * [GET /api/v3/deposits](#get-apiv3deposits)
+      * [GET /api/v3/deposit](#get-apiv3deposit)
   * [Public V2 Api Examples](#public-v2-api-examples)
       * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
       * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
@@ -102,7 +106,7 @@ A ruby implementation of MAX exchange API
     * [Trade](#trade)
       * [GET /api/v2/trades/my/of_order](#get-apiv2tradesmyof_order)
       * [GET /api/v2/trades/my](#get-apiv2tradesmy)
-    * [Deposit](#deposit)
+    * [Deposit](#deposit-1)
       * [GET /api/v2/deposits](#get-apiv2deposits)
       * [GET /api/v2/deposit](#get-apiv2deposit)
       * [GET /api/v2/deposit_addresses](#get-apiv2deposit_addresses)
@@ -584,6 +588,44 @@ secret_key = 'YOUR_SECRET_KEY'
 
 # use user specified order id
 @private_v3_api.cancel_order!(client_oid: 'MY_ORDER_123456')
+```
+
+### Deposit
+#### [GET /api/v3/deposit_address](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3DepositAddress)
+
+> Get user deposit address by currency version
+
+```rb
+@private_v3_api.deposit_address('bscusdt')
+```
+
+#### [GET /api/v3/deposits](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Deposits)
+
+> get your deposits history
+
+```rb
+# use default parameters
+@private_v3_api.deposits
+
+# provide all possible parameters
+@private_v3_api.deposits(
+  currency: 'max',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/deposit](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Deposit)
+
+> Get details of a specific deposit
+
+```rb
+# Query by uuid
+@private_v3_api.deposit(uuid: '18022603540001')
+
+# Query by txid
+@private_v3_api.deposit(txid: '0x8daa98e07886985bd6a142cd81b83582d6085f7eb931dc4984c18c84f2a845e0')
 ```
 
 ## Public V2 Api Examples
