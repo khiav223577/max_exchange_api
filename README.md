@@ -51,6 +51,15 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/info](#get-apiv3info)
     * [Account](#account)
       * [GET api/v3/wallet/{wallet_type}/accounts](#get-apiv3walletwallet_typeaccounts)
+    * [M-Wallet](#m-wallet)
+      * [GET api/v3/wallet/m/ad_ratio](#get-apiv3walletmad_ratio)
+      * [POST api/v3/wallet/m/loan](#post-apiv3walletmloan)
+      * [POST api/v3/wallet/m/repayment](#post-apiv3walletmrepayment)
+      * [GET api/v3/wallet/m/loans](#get-apiv3walletmloans)
+      * [GET api/v3/wallet/m/repayments](#get-apiv3walletmrepayments)
+      * [GET api/v3/wallet/m/liquidations](#get-apiv3walletmliquidations)
+      * [GET api/v3/wallet/m/liquidation](#get-apiv3walletmliquidation)
+      * [GET api/v3/wallet/m/interests](#get-apiv3walletminterests)
     * [Convert](#convert)
       * [GET /api/v3/converts](#get-apiv3converts)
       * [GET /api/v3/convert](#get-apiv3convert)
@@ -319,6 +328,102 @@ secret_key = 'YOUR_SECRET_KEY'
 
 # provide all possible parameters
 @private_v3_api.accounts(wallet_type: 'm', currency: 'usdt')
+```
+
+### M-Wallet
+#### [GET api/v3/wallet/m/ad_ratio](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMAdRatio)
+
+> Get the latest AD ratio of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_ad_ratio
+```
+
+#### [POST api/v3/wallet/m/loan](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/postApiV3WalletMLoan)
+
+> Create a loan request for your m-wallet
+
+```rb
+@private_v3_api.m_wallet_loan!('30000', 'usdt')
+```
+
+#### [POST api/v3/wallet/m/repayment](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/postApiV3WalletMRepayment)
+
+> Make a repayment for your loan
+
+```rb
+@private_v3_api.m_wallet_repay!('30000', 'usdt')
+```
+
+#### [GET api/v3/wallet/m/loans](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMLoans)
+
+> Get loan history of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_loans('usdt')
+
+# provide all possible parameters
+@private_v3_api.m_wallet_loans(
+  'usdt',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET api/v3/wallet/m/repayments](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMRepayments)
+
+> Get repayment history of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_repayments('usdt')
+
+# provide all possible parameters
+@private_v3_api.m_wallet_repayments(
+  'usdt',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET api/v3/wallet/m/liquidations](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMLiquidations)
+
+> Get liquidation history of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_liquidations
+
+# provide all possible parameters
+@private_v3_api.m_wallet_liquidations(
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET api/v3/wallet/m/liquidation](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMLiquidation)
+
+> Get detail of one specific liquidation history of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_liquidation('210407080800050666')
+```
+
+#### [GET api/v3/wallet/m/interests](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WalletMInterests)
+
+> Get interest history of your m-wallet
+
+```rb
+@private_v3_api.m_wallet_interests('usdt')
+
+# provide all possible parameters
+@private_v3_api.m_wallet_interests(
+  'usdt',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
 ```
 
 ### Convert
