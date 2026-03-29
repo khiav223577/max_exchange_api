@@ -46,7 +46,16 @@ A ruby implementation of MAX exchange API
       * [GET /api/v2/tickers](#get-apiv2tickers)
       * [GET /api/v2/timestamp](#get-apiv2timestamp)
       * [GET /api/v3/wallet/m/limits](#get-apiv3walletmlimits)
-  * [Private Api Examples](#private-api-examples)
+  * [Private V3 Api Examples](#private-v3-api-examples)
+    * [Order](#order)
+      * [GET /api/v3/wallet/{wallet_type}/orders/open](#get-apiv3walletwallet_typeordersopen)
+      * [GET /api/v3/wallet/{wallet_type}/orders/closed](#get-apiv3walletwallet_typeordersclosed)
+      * [GET /api/v3/wallet/{wallet_type}/orders/history](#get-apiv3walletwallet_typeordershistory)
+      * [POST /api/v3/wallet/{wallet_type}/order](#post-apiv3walletwallet_typeorder)
+      * [GET /api/v3/order](#get-apiv3order)
+      * [DELETE /api/v3/wallet/{wallet_type}/order](#delete-apiv3walletwallet_typeorder)
+      * [DELETE /api/v3/order](#delete-apiv3order)
+  * [Private V2 Api Examples](#private-v2-api-examples)
     * [User](#user)
       * [GET /api/v2/members/profile](#get-apiv2membersprofile)
       * [GET /api/v2/members/me](#get-apiv2membersme)
@@ -54,7 +63,7 @@ A ruby implementation of MAX exchange API
     * [Account](#account)
       * [GET /api/v2/members/accounts](#get-apiv2membersaccounts)
       * [GET /api/v2/members/accounts/{path_currency}](#get-apiv2membersaccountspath_currency)
-    * [Order](#order)
+    * [Order](#order-1)
       * [GET /api/v2/orders](#get-apiv2orders)
       * [GET /api/v2/order](#get-apiv2order)
       * [POST /api/v2/orders/clear](#post-apiv2ordersclear)
@@ -269,14 +278,140 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 
 ---
 
-## Private Api Examples
+## Private V3 Api Examples
+
+```rb
+access_key = 'YOUR_ACCESS_KEY'
+secret_key = 'YOUR_SECRET_KEY'
+
+@api_v3 = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
+```
+
+### Order
+#### [GET /api/v3/wallet/{wallet_type}/orders/open](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/getApiV3WalletPathWalletTypeOrdersOpen)
+
+> Get open orders.
+
+```rb
+# use default parameters
+@api_v3.open_orders('maxtwd')
+
+# provide all possible parameters
+@api_v3.open_orders(
+  'maxtwd',
+  wallet_type: 'm', # 'spot' or 'm'
+  timestamp: 1773734452000,
+  order_by: 'desc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/wallet/{wallet_type}/orders/closed](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/getApiV3WalletPathWalletTypeOrdersClosed)
+
+> Get closed orders.
+
+```rb
+# use default parameters
+@api_v3.closed_orders('maxtwd')
+
+# provide all possible parameters
+@api_v3.closed_orders(
+  'maxtwd',
+  wallet_type: 'm', # 'spot' or 'm'
+  timestamp: 1773734452000,
+  order_by: 'desc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/wallet/{wallet_type}/orders/history](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/getApiV3WalletPathWalletTypeOrdersHistory)
+
+> Get order history in ascending order from a specific from_id.
+
+```rb
+# use default parameters
+@api_v3.order_history('maxtwd')
+
+# provide all possible parameters
+@api_v3.orders_history(
+  'maxtwd',
+  wallet_type: 'm', # 'spot' or 'm'
+  from_id: 123456,
+  limit: 15,
+)
+```
+
+#### [POST /api/v3/wallet/{wallet_type}/order](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/postApiV3WalletPathWalletTypeOrder)
+
+> Create sell/buy order
+
+```rb
+# use default parameters
+@api_v3.create_order!('maxtwd', 'buy', 1000, price: 7.5)
+
+# provide all possible parameters
+@api_v3.create_order!(
+  'maxtwd',
+  'buy',
+  1000,
+  wallet_type: 'm', # 'spot' or 'm'
+  price: 7.5,
+  client_oid: 'MY_ORDER_ID_12345',
+  stop_price: 8,
+  ord_type: 'limit',
+  group_id: 12345678,
+)
+```
+
+#### [GET /api/v3/order](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/getApiV3Order)
+
+> Get order detail
+
+```rb
+# use default parameters
+# use max unique order id
+@api_v3.order(123456)
+
+# use user specified order id
+@api_v3.order(client_oid: 'MY_ORDER_123456')
+```
+
+#### [DELETE /api/v3/wallet/{wallet_type}/order](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/deleteApiV3WalletPathWalletTypeOrders)
+
+> Cancel all orders
+
+```rb
+# use default parameters
+@api_v3.cancel_orders!
+
+# provide all possible parameters
+@api_v3.cancel_orders!(
+  wallet_type: 'm', # 'spot' or 'm'
+  market: 'maxtwd', 
+  side: 'sell',
+  group_id: '123456',
+)
+```
+
+#### [DELETE /api/v3/order](https://max-api.maicoin.com/doc/v3.html#tag/Order/operation/deleteApiV3Order)
+
+> Cancel an order
+
+```rb
+# use max unique order id
+@api_v3.cancel_order!(123456)
+
+# use user specified order id
+@api_v3.cancel_order!(client_oid: 'MY_ORDER_123456')
+```
+
+## Private V2 Api Examples
 
 ```rb
 access_key = 'YOUR_ACCESS_KEY'
 secret_key = 'YOUR_SECRET_KEY'
 
 @api_v2 = MaxExchangeApi::PrivateV2Api.new(access_key, secret_key)
-@api_v3 = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key)
 ```
 
 ### User
