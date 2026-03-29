@@ -34,7 +34,18 @@ A ruby implementation of MAX exchange API
     * [Set timeout time](#set-timeout-time)
     * [Logging](#logging)
   * [Public V3 Api Examples](#public-v3-api-examples)
+      * [GET /api/v3/wallet/m/index_prices](#get-apiv3walletmindex_prices)
+      * [GET /api/v3/wallet/m/historical_index_prices](#get-apiv3walletmhistorical_index_prices)
       * [GET /api/v3/wallet/m/limits](#get-apiv3walletmlimits)
+      * [GET /api/v3/wallet/m/interest_rates](#get-apiv3walletminterest_rates)
+      * [GET /api/v3/markets](#get-apiv3markets)
+      * [GET /api/v3/currencies](#get-apiv3currencies)
+      * [GET /api/v3/timestamp](#get-apiv3timestamp)
+      * [GET /api/v3/k](#get-apiv3k)
+      * [GET /api/v3/depth](#get-apiv3depth)
+      * [GET /api/v3/trades](#get-apiv3trades)
+      * [GET /api/v3/tickers](#get-apiv3tickers)
+      * [GET /api/v3/ticker](#get-apiv3ticker)
   * [Private V3 Api Examples](#private-v3-api-examples)
     * [User](#user)
       * [GET /api/v3/info](#get-apiv3info)
@@ -164,12 +175,116 @@ api = MaxExchangeApi::PrivateV3Api.new(access_key, secret_key, config: { logger:
 @public_v3_api = MaxExchangeApi::PublicV3Api.new
 ```
 
+#### [GET /api/v3/wallet/m/index_prices](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMIndexPrices)
+
+> Get latest index prices of m-wallet
+
+```rb
+@public_v3_api.index_prices
+```
+
+#### [GET /api/v3/wallet/m/historical_index_prices](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMHistoricalIndexPrices)
+
+> Get latest historical index prices
+
+```rb
+@public_v3_api.index_prices_histories
+```
+
 #### [GET /api/v3/wallet/m/limits](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMLimits)
 
 > Get total available loan amount
 
 ```rb
 @public_v3_api.available_loan_amount
+```
+
+#### [GET /api/v3/wallet/m/interest_rates](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3WalletMInterestRates)
+
+> Get latest interest rates of m-wallet
+
+```rb
+@public_v3_api.loan_interest_rates
+```
+
+#### [GET /api/v3/markets](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Markets)
+
+> Get all available markets.
+
+```rb
+@public_v3_api.markets
+```
+
+#### [GET /api/v3/currencies](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Currencies)
+
+> Get all available currencies
+
+```rb
+@public_v3_api.currencies
+```
+
+#### [GET /api/v3/timestamp](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Timestamp)
+
+> Get server current time, in seconds since Unix epoch
+
+```rb
+@public_v3_api.timestamp
+```
+
+#### [GET /api/v3/k](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3K)
+
+> Get OHLC(k line) of a specific market.
+
+```rb
+# use default parameters
+@private_v3_api.k('btctwd')
+
+# provide all possible parameters
+@private_v3_api.k('btctwd', limit: 30, period: 1, timestamp: 1624705402)
+```
+
+#### [GET /api/v3/depth](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Depth)
+
+> Get depth of a specified market.
+
+```rb
+# use default parameters
+@private_v3_api.depth('maxtwd')
+
+# provide all possible parameters
+@private_v3_api.depth('maxtwd', limit: 10, sort_by_price: true)
+```
+
+#### [GET /api/v3/trades](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Trades)
+
+> Get recent trades on market, sorted in reverse creation order.
+
+```rb
+# use default parameters
+@private_v3_api.trades('btctwd')
+
+# provide all possible parameters
+@private_v3_api.trades(
+  'maxtwd', 
+  timestamp: 1624705402,
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/tickers](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Tickers)
+
+> Get ticker of all markets.
+
+```rb
+@private_v3_api.tickers
+```
+
+#### [GET /api/v3/ticker](https://max-api.maicoin.com/doc/v3.html#tag/Public/operation/getApiV3Ticker)
+
+> Get ticker of specific market.
+
+```rb
+@private_v3_api.ticker('btctwd')
 ```
 
 ---
