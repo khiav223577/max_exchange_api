@@ -72,6 +72,9 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/order](#get-apiv3order)
       * [DELETE /api/v3/wallet/{wallet_type}/order](#delete-apiv3walletwallet_typeorder)
       * [DELETE /api/v3/order](#delete-apiv3order)
+    * [Trade](#trade)
+      * [GET /api/v3/order/trades](#get-apiv3ordertrades)
+      * [GET /api/v3/wallet/{path_wallet_type}/trades](#get-apiv3walletpath_wallet_typetrades)
     * [Deposit](#deposit)
       * [GET /api/v3/deposit_address](#get-apiv3deposit_address)
       * [GET /api/v3/deposits](#get-apiv3deposits)
@@ -109,7 +112,7 @@ A ruby implementation of MAX exchange API
       * [POST /api/v2/order/delete](#post-apiv2orderdelete)
       * [POST /api/v2/orders](#post-apiv2orders)
       * [POST /api/v2/orders/multi/onebyone](#post-apiv2ordersmultionebyone)
-    * [Trade](#trade)
+    * [Trade](#trade-1)
       * [GET /api/v2/trades/my/of_order](#get-apiv2tradesmyof_order)
       * [GET /api/v2/trades/my](#get-apiv2tradesmy)
     * [Deposit](#deposit-1)
@@ -594,6 +597,38 @@ secret_key = 'YOUR_SECRET_KEY'
 
 # use user specified order id
 @private_v3_api.cancel_order!(client_oid: 'MY_ORDER_123456')
+```
+
+### Trade
+#### [GET /api/v3/order/trades](https://max-api.maicoin.com/doc/v3.html#tag/Trade/operation/getApiV3OrderTrades)
+
+> Get trade detail by your order info
+
+```rb
+# use max unique order id
+@private_v3_api.my_trades_of_order(123456)
+
+# use user specified order id
+@private_v3_api.my_trades_of_order(client_oid: 'MY_ORDER_123456')
+```
+
+#### [GET /api/v3/wallet/{path_wallet_type}/trades](https://max-api.maicoin.com/doc/v3.html#tag/Trade/operation/getApiV3WalletPathWalletTypeTrades)
+
+> Get executed trades
+
+```rb
+# use default parameters
+@private_v3_api.my_trades
+
+# provide all possible parameters
+@private_v3_api.my_trades(
+  wallet_type: 'm', # 'spot' or 'm'
+  market: 'maxtwd',
+  timestamp: 1624705402,
+  from_id: 68444,
+  order_by: 'asc',
+  limit: 15,
+)
 ```
 
 ### Deposit
