@@ -4,6 +4,8 @@ require 'max_exchange_api/base_api'
 
 module MaxExchangeApi
   class PrivateApi < BaseApi
+    attr_accessor :current_sub_account_sn
+
     def initialize(access_key, secret_key, config: nil)
       super(config: config)
 
@@ -17,7 +19,7 @@ module MaxExchangeApi
     def send_request(method, path, query)
       query = query.compact
       query.merge!(path: "#{@base_path}#{path}", nonce: (Time.now.to_f * 1000).to_i)
-      return super(method, path, Helper.gen_headers(query, @access_key, @secret_key), query)
+      return super(method, path, Helper.gen_headers(query, @access_key, @secret_key, sub_account_sn: current_sub_account_sn), query)
     end
   end
 end

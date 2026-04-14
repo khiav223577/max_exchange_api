@@ -22,6 +22,10 @@ module MaxExchangeApi
       def delete_sub_account!(sn)
         send_request(:delete, '/sub_account', sn: sn)
       end
+
+      def create_sub_account_transfer!(to_sn, amount, currency)
+        send_request(:post, '/sub_account/transfer', to_sn: to_sn, currency: currency, amount: amount)
+      end
     end
   end
 end
