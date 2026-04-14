@@ -11,6 +11,7 @@ require 'max_exchange_api/private_v3/deposit_api'
 require 'max_exchange_api/private_v3/withdraw_api'
 require 'max_exchange_api/private_v3/internal_transfer_api'
 require 'max_exchange_api/private_v3/reward_api'
+require 'max_exchange_api/private_v3/sub_account_api'
 
 module MaxExchangeApi
   class PrivateV3Api < PrivateApi
@@ -26,5 +27,6 @@ module MaxExchangeApi
     include PrivateV3::WithdrawApi
     include PrivateV3::InternalTransferApi
     include PrivateV3::RewardApi
+    include PrivateV3::SubAccountApi
   end
 end
