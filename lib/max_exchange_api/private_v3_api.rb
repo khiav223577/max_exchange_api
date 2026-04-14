@@ -7,6 +7,7 @@ require 'max_exchange_api/private_v3/m_wallet_api'
 require 'max_exchange_api/private_v3/convert_api'
 require 'max_exchange_api/private_v3/order_api'
 require 'max_exchange_api/private_v3/deposit_api'
+require 'max_exchange_api/private_v3/withdraw_api'
 
 module MaxExchangeApi
   class PrivateV3Api < PrivateApi
@@ -18,5 +19,6 @@ module MaxExchangeApi
     include PrivateV3::ConvertApi
     include PrivateV3::OrderApi
     include PrivateV3::DepositApi
+    include PrivateV3::WithdrawApi
   end
 end

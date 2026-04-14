@@ -76,6 +76,12 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/deposit_address](#get-apiv3deposit_address)
       * [GET /api/v3/deposits](#get-apiv3deposits)
       * [GET /api/v3/deposit](#get-apiv3deposit)
+    * [Withdraw](#withdraw)
+      * [GET /api/v3/withdraw_addresses](#get-apiv3withdraw_addresses)
+      * [GET /api/v3/withdrawals](#get-apiv3withdrawals)
+      * [GET /api/v3/withdrawal](#get-apiv3withdrawal)
+      * [POST /api/v3/withdrawal](#post-apiv3withdrawal)
+      * [POST /api/v3/withdrawal/twd](#post-apiv3withdrawaltwd)
   * [Public V2 Api Examples](#public-v2-api-examples)
       * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
       * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
@@ -626,6 +632,61 @@ secret_key = 'YOUR_SECRET_KEY'
 
 # Query by txid
 @private_v3_api.deposit(txid: '0x8daa98e07886985bd6a142cd81b83582d6085f7eb931dc4984c18c84f2a845e0')
+```
+
+### Withdraw
+#### [GET /api/v3/withdraw_addresses](https://max-api.maicoin.com/doc/v3.html#tag/Wallet/operation/getApiV3WithdrawAddresses)
+
+> Get withdraw addresses of spot wallet
+
+```rb
+@private_v3_api.withdraw_addresses('usdt')
+
+# provide all possible parameters
+@private_v3_api.withdraw_addresses('usdt', limit: 10, offset: 5)
+```
+
+#### [GET /api/v3/withdrawals](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Withdrawals)
+
+> Get external withdrawals history
+
+```rb
+# use default parameters
+@private_v3_api.withdraws
+
+# provide all possible parameters
+@private_v3_api.withdraws(
+  currency: 'max',
+  state: 'done',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+#### [GET /api/v3/withdrawal](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Withdrawal)
+
+> Get details of a specific external withdraw
+
+```rb
+# Query by uuid
+@private_v3_api.withdraw(uuid: '18022603540001')
+```
+
+#### [POST /api/v3/withdrawal](https://max-api.maicoin.com/doc/v2.html#tag/private/operation/postApiV2Withdrawal)
+
+> Submit a crypto withdrawal. IP whitelist for api token is required.
+
+```rb
+@private_v3_api.create_withdraw!('withdraw_address_id', 100000)
+```
+
+#### [POST /api/v3/withdrawal/twd](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/postApiV3WithdrawalTwd)
+
+> Submit twd withdrawal to verified bank account. IP whitelist for api token is required.
+
+```rb
+@private_v3_api.create_twd_withdraw!(100000)
 ```
 
 ## Public V2 Api Examples
