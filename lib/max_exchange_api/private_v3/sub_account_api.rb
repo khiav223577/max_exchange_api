@@ -4,7 +4,7 @@ module MaxExchangeApi
   module PrivateV3
     module SubAccountApi
       def sub_accounts
-        send_request(:get, '/sub_accounts')
+        send_request(:get, '/sub_accounts', {})
       end
 
       def sub_account(sn)
