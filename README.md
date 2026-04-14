@@ -89,6 +89,12 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/internal_transfers](#get-apiv3internal_transfers)
     * [Reward](#reward)
       * [GET /api/v3/rewards](#get-apiv3rewards)
+  * [SubAccount](#subaccount)
+      * [GET /api/v3/sub_accounts](#get-apiv3sub_accounts)
+      * [GET /api/v3/sub_account](#get-apiv3sub_account)
+      * [POST /api/v3/sub_accounts](#post-apiv3sub_accounts)
+      * [PUT /api/v3/sub_account](#put-apiv3sub_account)
+      * [DELETE /api/v3/sub_account](#delete-apiv3sub_account)
   * [Public V2 Api Examples](#public-v2-api-examples)
       * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
       * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
@@ -764,6 +770,47 @@ secret_key = 'YOUR_SECRET_KEY'
   order_by: 'asc',
   limit: 15,
 )
+```
+
+## SubAccount
+#### [GET /api/v3/sub_accounts](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3SubAccounts)
+
+> Get sub_accounts
+
+```rb
+@private_v3_api.sub_accounts
+```
+
+#### [GET /api/v3/sub_account](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3SubAccount)
+
+> Get sub_account
+
+```rb
+@private_v3_api.sub_account('s1-a7f20f')
+```
+
+#### [POST /api/v3/sub_accounts](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/postApiV3SubAccounts)
+
+> Create sub_account
+
+```rb
+@private_v3_api.create_sub_account!(name: 'My Test SubAccount')
+```
+
+#### [PUT /api/v3/sub_account](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/putApiV3SubAccount)
+
+> Update sub_account
+
+```rb
+@private_v3_api.update_sub_account!('s1-a7f20f', name: 'My Test SubAccount')
+```
+
+#### [DELETE /api/v3/sub_account](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/deleteApiV3SubAccount)
+
+> Delete sub_account
+
+```rb
+@private_v3_api.delete_sub_account!('s1-a7f20f')
 ```
 
 ## Public V2 Api Examples
