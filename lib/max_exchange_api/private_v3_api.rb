@@ -1,9 +1,30 @@
 # frozen_string_literal: true
 
 require 'max_exchange_api/private_api'
+require 'max_exchange_api/private_v3/user_api'
+require 'max_exchange_api/private_v3/account_api'
+require 'max_exchange_api/private_v3/m_wallet_api'
+require 'max_exchange_api/private_v3/convert_api'
+require 'max_exchange_api/private_v3/order_api'
+require 'max_exchange_api/private_v3/trade_api'
+require 'max_exchange_api/private_v3/deposit_api'
+require 'max_exchange_api/private_v3/withdraw_api'
+require 'max_exchange_api/private_v3/internal_transfer_api'
+require 'max_exchange_api/private_v3/reward_api'
 
 module MaxExchangeApi
   class PrivateV3Api < PrivateApi
     base_uri 'https://max-api.maicoin.com/api/v3'
+
+    include PrivateV3::UserApi
+    include PrivateV3::AccountApi
+    include PrivateV3::MWalletApi
+    include PrivateV3::ConvertApi
+    include PrivateV3::OrderApi
+    include PrivateV3::TradeApi
+    include PrivateV3::DepositApi
+    include PrivateV3::WithdrawApi
+    include PrivateV3::InternalTransferApi
+    include PrivateV3::RewardApi
   end
 end
