@@ -1,5 +1,13 @@
 ## Change Log
 
+### [v2.0.0](https://github.com/khiav223577/max_exchange_api/compare/v1.4.0...v2.0.0) 2026/04/14
+- [#16](https://github.com/khiav223577/max_exchange_api/pull/16) Support sub-accounts API (@khiav223577)
+- [#15](https://github.com/khiav223577/max_exchange_api/pull/15) Support V3 API (@khiav223577)
+
+### [v1.4.0](https://github.com/khiav223577/max_exchange_api/compare/v1.3.0...v1.4.0) 2025/10/11
+- [#13](https://github.com/khiav223577/max_exchange_api/pull/13) FEATURE: Support v3 available loan amount API (@khiav223577)
+- [#14](https://github.com/khiav223577/max_exchange_api/pull/14) FIX: The Code Climate API was disabled on July 18th, 2025. (@khiav223577)
+
 ### [v1.3.0](https://github.com/khiav223577/max_exchange_api/compare/v1.2.0...v1.3.0) 2021/11/29
 - [#12](https://github.com/khiav223577/max_exchange_api/pull/12) Support Ruby 3.0 (@khiav223577)
 - [#11](https://github.com/khiav223577/max_exchange_api/pull/11) Add user agent to headers (@khiav223577)
