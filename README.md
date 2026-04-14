@@ -85,6 +85,10 @@ A ruby implementation of MAX exchange API
       * [GET /api/v3/withdrawal](#get-apiv3withdrawal)
       * [POST /api/v3/withdrawal](#post-apiv3withdrawal)
       * [POST /api/v3/withdrawal/twd](#post-apiv3withdrawaltwd)
+    * [Internal Transfer](#internal-transfer)
+      * [GET /api/v3/internal_transfers](#get-apiv3internal_transfers)
+    * [Reward](#reward)
+      * [GET /api/v3/rewards](#get-apiv3rewards)
   * [Public V2 Api Examples](#public-v2-api-examples)
       * [GET /api/v2/vip_levels](#get-apiv2vip_levels)
       * [GET /api/v2/vip_levels/{level}](#get-apiv2vip_levelslevel)
@@ -125,10 +129,10 @@ A ruby implementation of MAX exchange API
       * [GET /api/v2/withdrawal](#get-apiv2withdrawal)
       * [POST /api/v2/withdrawal](#post-apiv2withdrawal)
       * [GET /api/v2/withdraw_addresses](#get-apiv2withdraw_addresses)
-    * [Internal Transfer](#internal-transfer)
+    * [Internal Transfer](#internal-transfer-1)
       * [GET /api/v2/internal_transfers](#get-apiv2internal_transfers)
       * [GET /api/v2/internal_transfer](#get-apiv2internal_transfer)
-    * [Reward](#reward)
+    * [Reward](#reward-1)
       * [GET /api/v2/rewards](#get-apiv2rewards)
       * [GET /api/v2/rewards/{path_reward_type}](#get-apiv2rewardspath_reward_type)
       * [GET /api/v2/max_rewards/yesterday](#get-apiv2max_rewardsyesterday)
@@ -722,6 +726,44 @@ secret_key = 'YOUR_SECRET_KEY'
 
 ```rb
 @private_v3_api.create_twd_withdraw!(100000)
+```
+
+### Internal Transfer
+#### [GET /api/v3/internal_transfers](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3InternalTransfers)
+
+> Get internal transfers history
+
+```rb
+# use default parameters
+@private_v3_api.internal_transfers
+
+# provide all possible parameters
+@private_v2_api.internal_transfers(
+  currency: 'btc',
+  side: 'in',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
+```
+
+### Reward
+#### [GET /api/v3/rewards](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3Rewards)
+
+> Get internal transfers history
+
+```rb
+# use default parameters
+@private_v3_api.rewards
+
+# provide all possible parameters
+@private_v2_api.rewards(
+  currency: 'btc',
+  reward_type: 'yield',
+  timestamp: 1624705402,
+  order_by: 'asc',
+  limit: 15,
+)
 ```
 
 ## Public V2 Api Examples
