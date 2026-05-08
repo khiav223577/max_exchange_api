@@ -46,7 +46,7 @@ Or install it yourself as:
 ## Usage
 
 - [V2 API](docs/README.api_v2.md)
-- [V3 API](README.api_v3.md)
+- [V3 API](docs/README.api_v3.md)
 
 ## Development
 
