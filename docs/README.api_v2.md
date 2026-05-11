@@ -1,6 +1,7 @@
 ## Documentations
 
-* [REST API Introduction](https://max.maicoin.com/documents/api_v2)
+* [MAX API Introduction](https://campaign.maicoin.com/api)
+* [MAX V2 RESTful API List](https://max-api.maicoin.com/doc/v2.html)
 * [WebSocket API Documentation](https://maicoin.github.io/max-websocket-docs/)
 
 ## Table of contents
