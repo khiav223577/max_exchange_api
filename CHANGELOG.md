@@ -1,6 +1,6 @@
 ## Change Log
 
-### [upcoming](https://github.com/khiav223577/max_exchange_api/compare/v2.0.0...HEAD) 2026/05/08
+### [v2.0.1](https://github.com/khiav223577/max_exchange_api/compare/v2.0.0...v2.0.1) 2026/05/11
 - [#17](https://github.com/khiav223577/max_exchange_api/pull/17) Fix: missing params for get sub_accounts API (@khiav223577)
 
 ### [v2.0.0](https://github.com/khiav223577/max_exchange_api/compare/v1.4.0...v2.0.0) 2026/04/14
