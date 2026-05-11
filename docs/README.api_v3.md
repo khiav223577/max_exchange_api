@@ -69,7 +69,7 @@
       * [GET /api/v3/internal_transfers](#get-apiv3internal_transfers)
     * [Reward](#reward)
       * [GET /api/v3/rewards](#get-apiv3rewards)
-  * [SubAccount](#subaccount)
+    * [SubAccount](#subaccount)
       * [GET /api/v3/sub_accounts](#get-apiv3sub_accounts)
       * [GET /api/v3/sub_account](#get-apiv3sub_account)
       * [POST /api/v3/sub_accounts](#post-apiv3sub_accounts)
@@ -703,7 +703,7 @@ secret_key = 'YOUR_SECRET_KEY'
 )
 ```
 
-## SubAccount
+### SubAccount
 #### [GET /api/v3/sub_accounts](https://max-api.maicoin.com/doc/v3.html#tag/Transaction/operation/getApiV3SubAccounts)
 
 > Get sub_accounts
